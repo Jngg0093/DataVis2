@@ -1,12 +1,18 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Nuclear Weapons" },
-    "data": {
-    "url": "../Data/atomic-weapons.csv"    
-    },
-    "mark": "line",
+    "width": 300, "height": 200,
+    "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/nuclear-warhead-stockpiles-lines.csv"},
+    "mark": "area",
     "encoding": {
-    "x": { "field": "Country"},
-    "y": { "field": "Military Stockpile", "type": "quantitative" }
+      "x": {
+        "timeUnit": "year", "field": "Year",
+        "axis": {"format": "%Y"}
+      },
+      "y": {
+        "aggregate": "sum", "field": "nuclear_weapons_stockpile"
+      },
+      "color": {
+        "field": "Entity"
+      }
     }
-}
+  }
