@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 300, 
+    "height": 200,
+    "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/nuclear-warhead-stockpiles-lines.csv"},
+    "params": [
+        {
+          "name": "year_chosen",
+          "value": 2023,
+          "bind": {
+            "input": "range",
+            "min": 1945,
+            "max": 2023,
+            "step": 1,
+            "name": "Year: "
+          }
+        }],
+    "transform": [
+        {"filter": "datum.Year == year_chosen"}
+      ],
+    "encoding": {
+      "x": {
+        "field": "Entity",
+        "type": "nominal",
+        "title": "Countries"
+      },
+      "y": {
+        "field": "nuclear_weapons_stockpile",
+        "type": "quantitative", 
+        "title": "Military stockpile"
+        }
+      },
+    "layer":[{
+      "mark": "bar",
+      "encoding": {
+        "x": {"field":"Entity", "type":"nominal"},
+        "y": {"field": "nuclear_weapons_stockpile", "type":"quantitative"},
+        "color": {"field": "Entity"}
+        }
+        }]
+}
