@@ -1,143 +1,148 @@
-,country,spend,nukes,total
-0,Algeria,9145.8,0.0,467200.0
-2,Morocco,4995.0,0.0,395800.0
-3,Tunisia,1156.2,0.0,47800.0
-4,Angola,1622.8,0.0,117000.0
-5,Benin,97.2,0.0,12050.0
-6,Botswana,489.3,0.0,9000.0
-7,Burkina Faso,562.6,0.0,11450.0
-8,Burundi,101.4,0.0,51050.0
-9,Cameroon,416.6,0.0,34400.0
-10,Cape Verde,10.3,0.0,1200.0
-11,Central African Republic,42.0,0.0,10150.0
-12,Chad,357.4,0.0,45150.0
-17,Equatorial Guinea,156.8,0.0,1450.0
-19,Ethiopia,1031.4,0.0,138000.0
-20,Gabon,277.7,0.0,6700.0
-22,Ghana,229.3,0.0,15500.0
-23,Guinea,441.3,0.0,12300.0
-24,Guinea-Bissau,24.5,0.0,4450.0
-25,Kenya,1138.3,0.0,29100.0
-26,Lesotho,34.7,0.0,2000.0
-27,Liberia,18.7,0.0,2010.0
-28,Madagascar,98.0,0.0,21600.0
-29,Malawi,75.8,0.0,14900.0
-30,Mali,515.1,0.0,20800.0
-31,Mauritania,225.4,0.0,20850.0
-32,Mauritius,20.3,0.0,2550.0
-33,Mozambique,281.9,0.0,11200.0
-34,Namibia,369.1,0.0,15900.0
-35,Niger,242.5,0.0,10700.0
-36,Nigeria,3109.4,0.0,223000.0
-37,Rwanda,177.2,0.0,35000.0
-38,Senegal,433.5,0.0,18600.0
-39,Seychelles,26.1,0.0,420.0
-40,Sierra Leone,24.5,0.0,8500.0
-41,Somalia,115.1,0.0,19800.0
-42,South Africa,2995.3,0.0,80400.0
-43,South Sudan,378.8,0.0,185000.0
-46,Tanzania,832.2,0.0,108400.0
-47,Togo,336.6,0.0,9300.0
-48,Uganda,923.1,0.0,56400.0
-49,Zambia,326.1,0.0,19500.0
-50,Zimbabwe,182.1,0.0,50800.0
-51,Belize,23.7,0.0,2350.0
-52,Costa Rica,0.0,0.0,9800.0
-54,Dominican Republic,760.8,0.0,71050.0
-55,El Salvador,422.4,0.0,51400.0
-56,Guatemala,430.6,0.0,106900.0
-57,Haiti,12.6,0.0,200.0
-58,Honduras,477.5,0.0,82950.0
-59,Jamaica,215.1,0.0,4930.0
-60,Mexico,8535.5,0.0,409400.0
-61,Nicaragua,84.2,0.0,12000.0
-62,Panama,0.0,0.0,26000.0
-63,Trinidad and Tobago,201.1,0.0,4050.0
-64,Canada,26896.3,0.0,107500.0
-66,Argentina,2577.6,0.0,103350.0
-67,Bolivia,640.3,0.0,71200.0
-68,Brazil,20210.8,0.0,2101500.0
-69,Chile,5566.5,0.0,161900.0
-70,Colombia,9937.7,0.0,516050.0
-71,Ecuador,2488.6,0.0,158750.0
-72,Guyana,84.3,0.0,4070.0
-73,Paraguay,365.7,0.0,193250.0
-74,Peru,2845.4,0.0,346000.0
-75,Uruguay,1375.6,0.0,22400.0
-76,Venezuela,4.6,0.0,351000.0
-77,Australia,32298.9,0.0,88700.0
-78,Fiji,66.8,0.0,9500.0
-79,New Zealand,2829.1,0.0,11300.0
-80,Papua New Guinea,97.5,0.0,3600.0
-82,Bangladesh,4806.3,0.0,226950.0
-83,India,81363.2,160.0,5137500.0
-84,Nepal,428.3,0.0,111600.0
-85,Pakistan,10337.5,165.0,1495000.0
-86,Sri Lanka,1053.5,0.0,353100.0
-87,China,291958.4,350.0,4015000.0
-88,Japan,45992.1,0.0,317500.0
-91,Mongolia,118.4,0.0,154200.0
-92,Taiwan,12508.6,0.0,1831800.0
-93,Brunei,435.9,0.0,8350.0
-94,Cambodia,611.0,0.0,191300.0
-95,Indonesia,8986.6,0.0,1075500.0
-96,Malaysia,3670.7,0.0,431800.0
-97,Myanmar,1856.9,0.0,513000.0
-98,Philippines,3965.4,0.0,336400.0
-99,Singapore,11687.6,0.0,310900.0
-100,Thailand,5724.4,0.0,699550.0
-103,Kazakhstan,1133.0,0.0,70500.0
-105,Tajikistan,103.5,0.0,16300.0
-108,Albania,288.7,0.0,8000.0
-109,Bosnia and Herzegovina,184.5,0.0,10500.0
-110,Bulgaria,1336.0,0.0,39950.0
-111,Croatia,1308.5,0.0,36550.0
-113,Estonia,810.9,0.0,24600.0
-114,Hungary,2572.2,0.0,59800.0
-116,Latvia,848.8,0.0,22110.0
-117,Lithuania,1732.3,0.0,40950.0
-118,North Macedonia,225.0,0.0,20450.0
-119,Montenegro,98.0,0.0,12450.0
-120,Poland,16573.1,0.0,189450.0
-121,Romania,5186.7,0.0,176300.0
-122,Serbia,1426.4,0.0,82000.0
-123,Slovakia,1994.2,0.0,15850.0
-124,Slovenia,735.2,0.0,14700.0
-125,Armenia,795.2,0.0,259100.0
-126,Azerbaijan,2991.0,0.0,471950.0
-127,Belarus,820.8,0.0,444850.0
-128,Georgia,360.3,0.0,26050.0
-129,Moldova,47.7,0.0,64050.0
-130,Russia,86373.1,4477.0,3568000.0
-131,Ukraine,43997.7,0.0,1211000.0
-132,Austria,3625.6,0.0,147650.0
-133,Belgium,6867.0,0.0,31400.0
-134,Cyprus,494.2,0.0,65750.0
-135,Denmark,5467.9,0.0,58500.0
-136,Finland,4822.9,0.0,254000.0
-137,France,53638.7,290.0,375100.0
-138,Germany,55759.7,0.0,213550.0
-139,Greece,8104.9,0.0,368050.0
-140,Iceland,0.0,0.0,250.0
-141,Ireland,1164.3,0.0,13550.0
-142,Italy,33489.7,0.0,359550.0
-143,Luxembourg,564.6,0.0,1500.0
-144,Malta,87.0,0.0,2130.0
-145,Netherlands,15606.6,0.0,45800.0
-146,Norway,8388.4,0.0,63250.0
-147,Portugal,3500.3,0.0,263650.0
-148,Spain,20306.6,0.0,211300.0
-149,Sweden,7722.5,0.0,50950.0
-150,Switzerland,6145.2,0.0,216000.0
-151,United Kingdom,68462.6,180.0,227100.0
-153,Bahrain,1381.3,0.0,19460.0
-154,Egypt,4645.9,0.0,1314500.0
-155,Iran,6846.6,0.0,1000000.0
-156,Iraq,4683.1,0.0,341000.0
-157,Israel,23406.1,90.0,642500.0
-158,Jordan,2323.3,0.0,180500.0
-159,Kuwait,8244.1,0.0,48300.0
-160,Lebanon,4739.0,0.0,80000.0
-161,Oman,5783.5,0.0,47000.0
-162,Qatar,15412.1,0.0,21500.0
-163,Saudi Arabia,75013.3,0.0,251500.0
+country,spend,nukes,total,alliance
+Zimbabwe,182.1,0,50800,Neither
+Zambia,326.1,0,19500,Neither
+Venezuela,4.6,0,351000,Neither
+Uruguay,1375.6,0,22400,Neither
+United Kingdom,68462.6,180,227100,NATO
+Ukraine,43997.7,0,1211000,Neither
+Uganda,923.1,0,56400,Neither
+Tunisia,1156.2,0,47800,Neither
+Trinidad and Tobago,201.1,0,4050,Neither
+Togo,336.6,0,9300,Neither
+Thailand,5724.4,0,699550,Neither
+Tanzania,832.2,0,108400,Neither
+Tajikistan,103.5,0,16300,CSTO
+Taiwan,12508.6,0,1831800,Neither
+Switzerland,6145.2,0,216000,Neither
+Sweden,7722.5,0,50950,Neither
+Sri Lanka,1053.5,0,353100,Neither
+Spain,20306.6,0,211300,NATO
+South Sudan,378.8,0,185000,Neither
+South Africa,2995.3,0,80400,Neither
+Somalia,115.1,0,19800,Neither
+Slovenia,735.2,0,14700,NATO
+Slovakia,1994.2,0,15850,NATO
+Singapore,11687.6,0,310900,Neither
+Sierra Leone,24.5,0,8500,Neither
+Seychelles,26.1,0,420,Neither
+Serbia,1426.4,0,82000,Neither
+Senegal,433.5,0,18600,Neither
+Saudi Arabia,75013.3,0,251500,Neither
+Rwanda,177.2,0,35000,Neither
+Russia,86373.1,4477,3568000,CSTO
+Romania,5186.7,0,176300,NATO
+Qatar,15412.1,0,21500,Neither
+Portugal,3500.3,0,263650,NATO
+Poland,16573.1,0,189450,NATO
+Philippines,3965.4,0,336400,Neither
+Peru,2845.4,0,346000,Neither
+Paraguay,365.7,0,193250,Neither
+Papua New Guinea,97.5,0,3600,Neither
+Panama,0,0,26000,Neither
+Pakistan,10337.5,165,1495000,Neither
+Oman,5783.5,0,47000,Neither
+Norway,8388.4,0,63250,NATO
+North Macedonia,225,0,20450,NATO
+Nigeria,3109.4,0,223000,Neither
+Niger,242.5,0,10700,Neither
+Nicaragua,84.2,0,12000,Neither
+New Zealand,2829.1,0,11300,Neither
+Netherlands,15606.6,0,45800,NATO
+Nepal,428.3,0,111600,Neither
+Namibia,369.1,0,15900,Neither
+Myanmar,1856.9,0,513000,Neither
+Mozambique,281.9,0,11200,Neither
+Morocco,4995,0,395800,Neither
+Montenegro,98,0,12450,NATO
+Mongolia,118.4,0,154200,Neither
+Moldova,47.7,0,64050,Neither
+Mexico,8535.5,0,409400,Neither
+Mauritius,20.3,0,2550,Neither
+Mauritania,225.4,0,20850,Neither
+Malta,87,0,2130,Neither
+Mali,515.1,0,20800,Neither
+Malaysia,3670.7,0,431800,Neither
+Malawi,75.8,0,14900,Neither
+Madagascar,98,0,21600,Neither
+Luxembourg,564.6,0,1500,NATO
+Lithuania,1732.3,0,40950,NATO
+Liberia,18.7,0,2010,Neither
+Lesotho,34.7,0,2000,Neither
+Lebanon,4739,0,80000,Neither
+Latvia,848.8,0,22110,NATO
+Kuwait,8244.1,0,48300,Neither
+Kenya,1138.3,0,29100,Neither
+Kazakhstan,1133,0,70500,CSTO
+Jordan,2323.3,0,180500,Neither
+Japan,45992.1,0,317500,Neither
+Jamaica,215.1,0,4930,Neither
+Italy,33489.7,0,359550,NATO
+Israel,23406.1,90,642500,Neither
+Ireland,1164.3,0,13550,Neither
+Iraq,4683.1,0,341000,Neither
+Iran,6846.6,0,1000000,Neither
+Indonesia,8986.6,0,1075500,Neither
+India,81363.2,160,5137500,Neither
+Iceland,0,0,250,NATO
+Hungary,2572.2,0,59800,NATO
+Honduras,477.5,0,82950,Neither
+Haiti,12.6,0,200,Neither
+Guyana,84.3,0,4070,Neither
+Guinea-Bissau,24.5,0,4450,Neither
+Guinea,441.3,0,12300,Neither
+Guatemala,430.6,0,106900,Neither
+Greece,8104.9,0,368050,NATO
+Ghana,229.3,0,15500,Neither
+Germany,55759.7,0,213550,NATO
+Georgia,360.3,0,26050,Neither
+Gabon,277.7,0,6700,Neither
+France,53638.7,290,375100,NATO
+Finland,4822.9,0,254000,NATO
+Fiji,66.8,0,9500,Neither
+Ethiopia,1031.4,0,138000,Neither
+Estonia,810.9,0,24600,NATO
+Equatorial Guinea,156.8,0,1450,Neither
+El Salvador,422.4,0,51400,Neither
+Egypt,4645.9,0,1314500,Neither
+Ecuador,2488.6,0,158750,Neither
+Dominican Republic,760.8,0,71050,Neither
+Denmark,5467.9,0,58500,NATO
+Cyprus,494.2,0,65750,Neither
+Croatia,1308.5,0,36550,NATO
+Costa Rica,0,0,9800,Neither
+Colombia,9937.7,0,516050,Neither
+China,291958.4,350,4015000,Neither
+Chile,5566.5,0,161900,Neither
+Chad,357.4,0,45150,Neither
+Central African Republic,42,0,10150,Neither
+Cape Verde,10.3,0,1200,Neither
+Canada,26896.3,0,107500,NATO
+Cameroon,416.6,0,34400,Neither
+Cambodia,611,0,191300,Neither
+Burundi,101.4,0,51050,Neither
+Burkina Faso,562.6,0,11450,Neither
+Bulgaria,1336,0,39950,NATO
+Brunei,435.9,0,8350,Neither
+Brazil,20210.8,0,2101500,Neither
+Botswana,489.3,0,9000,Neither
+Bosnia and Herzegovina,184.5,0,10500,Neither
+Bolivia,640.3,0,71200,Neither
+Benin,97.2,0,12050,Neither
+Belize,23.7,0,2350,Neither
+Belgium,6867,0,31400,NATO
+Belarus,820.8,0,444850,CSTO
+Bangladesh,4806.3,0,226950,Neither
+Bahrain,1381.3,0,19460,Neither
+Azerbaijan,2991,0,471950,Neither
+Austria,3625.6,0,147650,Neither
+Australia,32298.9,0,88700,Neither
+Armenia,795.2,0,259100,CSTO
+Argentina,2577.6,0,103350,Neither
+Angola,1622.8,0,117000,Neither
+Algeria,9145.8,0,467200,Neither
+Albania,288.7,0,8000,NATO
+United States,876943.2,3708,2233050,NATO
+Turkey,16200,0,890700,NATO
+Czech Republic,4005.4,0,21750,NATO
+South Korea,46365.4,0,6712500,Neither
+Kyrgyzstan,149.8,0,20400,CSTO
