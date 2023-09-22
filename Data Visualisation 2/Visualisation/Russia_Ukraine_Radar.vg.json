@@ -50,7 +50,7 @@
     {
       "name": "angle",
       "type": "point",
-      "range": {"signal":"[-PI, PI]"},
+      "range": {"signal":"[PI/2, 5*PI/2]"},
       "padding": 0.5,
       "domain": {"data": "keys", "field": "key"}
     },
@@ -98,7 +98,7 @@
       "name": "color",
       "type": "ordinal",
       "domain": {"data": "table", "field": "Country"},
-      "range": {"scheme": "category10"}
+      "range": ["#FFDD00","#E4181C"]
     }
   ],
 
@@ -134,7 +134,7 @@
               "strokeWidth": {"value": 2},
               "interpolate": {"value": "linear-closed"},
               "fill": {"scale": "color", "field": "Country"},
-              "fillOpacity": {"value": 0.3},
+              "fillOpacity": {"value": 0.2},
               "strokeOpacity": {"value": 1}
             }
           }
@@ -173,39 +173,19 @@
       }
     },
     {
-      "type": "text",
-      "name": "key-label",
-      "from": {"data": "keys"},
-      "zindex": 1,
-      "encode": {
-        "enter": {
-          "x": {"signal": "(radius + 10) * cos(scale('angle', datum.key))"},
-          "y": {"signal": "(radius + 10) * sin(scale('angle', datum.key))"},
-          "text": {"field": "key"},
-          "align": [
-            {
-              "test": "abs(scale('angle', datum.key)) > PI / 2",
-              "value": "right"
-            },
-            {
-              "value": "left"
-            }
-          ],
-          "baseline": [
-            {
-              "test": "scale('angle', datum.key) > 0", "value": "top"
-            },
-            {
-              "test": "scale('angle', datum.key) == 0", "value": "middle"
-            },
-            {
-              "value": "bottom"
-            }
-          ],
-          "fill": {"value": "black"},
-          "fontWeight": {"value": "bold"}
+        "name": "label",
+        "from": {"data": "keys"},
+        "type": "text",
+        "encode": {
+          "update": {
+            "x": {"signal": "1.2 * radius * cos(scale('angle', datum.key))"},
+            "y": {"signal": "1.2 * radius * sin(scale('angle', datum.key))"},
+            "baseline": {"value": "top"},
+            "text": {"field": "key"},
+            "align": {"value": "center"},
+            "fontWeight": {"value": "bold"}
+          }
         }
       }
-    }
   ]
 }
