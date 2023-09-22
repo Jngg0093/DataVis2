@@ -1,0 +1,29 @@
+body *{
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1 {
+    font-weight: 500;
+    font-family: 'Helvetica', sans-serif;
+  }
+  
+  body {
+    background-color: lightgray;
+  }
+  
+  .page {
+    width: 850px;
+    background-color: white;
+    margin: auto;
+    padding: 50px;
+    padding-top: 35px;
+  }
+  
+  .vis-container {
+    width: 100%;
+    border: None;
+  }
+
+  .pure-g {
+    margin-bottom: 40px;
+  }

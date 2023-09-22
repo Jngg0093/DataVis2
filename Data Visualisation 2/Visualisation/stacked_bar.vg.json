@@ -1,0 +1,21 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [{"fold": ["Financial commitments",
+      "Humanitarian commitments",
+      "Military commitments",
+      "Share in total EU commitments"]}],
+      "mark": "bar",
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "value"},
+        "y": {"field": "Country", "sort":"-x"},
+        "color": {"field": "key"},
+        "tooltip":[
+        {"field":"Country", "type":"nominal"},
+        {"field":"value", "type":"quantitative"}
+        ]
+    }
+  }
