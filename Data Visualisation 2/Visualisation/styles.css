@@ -1,26 +1,29 @@
 body *{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
   }
   
   h1 {
-    font-weight: 500;
-    font-family: 'Helvetica', sans-serif;
+    font-size: 60px;
+    font-weight: 400;
+    font-family: 'Allerta Stencil', sans-serif;
   }
   
   body {
-    background-color: lightgray;
+    background-color: lightgrey;
   }
   
   .page {
-    width: 850px;
-    background-color: white;
+    width: 1200px;
+    background-color: lightgrey;
     margin: auto;
     padding: 50px;
-    padding-top: 35px;
+    padding-top: px;
   }
   
   .vis-container {
     width: 100%;
+    max-height: 300px;
+    overflow: scroll;
     border: None;
   }
 
