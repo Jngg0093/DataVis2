@@ -21,8 +21,9 @@
     "encoding": {
       "x": {
         "field": "Entity",
-        "type": "nominal",
-        "title": "Countries"
+        "type": "ordinal",
+        "title": "Countries",
+        "sort": "-y"
       },
       "y": {
         "field": "nuclear_weapons_stockpile",

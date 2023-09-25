@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/budgetcomparison.csv"},
+    "width": 500,
+    "transform": [
+      {"fold": ["Financial Budget ($ billion)","Aid"]}
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Month of the year"
+      },
+      "y": {
+        "aggregate": "sum",
+        "field":"value",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "key",
+        "type": "nominal",
+        "title": "Weather type"
+      }
+    }
+  }
+  
