@@ -36,7 +36,7 @@
         </div>
         <!-- end pure grid group -->
     
-       <!-- pure grid group for first row of charts-->
+       <!-- pure grid group for first row -->
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
@@ -47,13 +47,26 @@
             <div class="pure-u-1-3">
                 <div id="radar" class="vis-container"></div>
             </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for second row -->
+        <div class="pure-g">
             <div class="pure-u-1-3">
-                <div id="stacked2" class="vis-container"></div>
+                <div class="description description-left">
+                    <h2>Combat</h2>
+                    <p>To fight against Russian forces, Ukraine have had to spend an extreme amount of their GDP
+                        Far more than any other country in the world.
+                    </p>
+                </div>
+            </div>
+            <div class="pure-u-2-3">
+                <div id="map" class="vis-container"></div>
             </div>
         </div>
         <!-- end pure grid group -->
 
-        <!-- pure grid group for first row of text -->
+        <!-- pure grid group for third row -->
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
@@ -61,39 +74,56 @@
                     <p>USA are Ukraine's biggest benefactor by a large margin</p>
                 </div>
             </div>
-
-            <div class="pure-u-2-3">
-                <div id="stackedbar1" class="vis-container"></div>
+            <div class="pure-u-1-3">
+                
+            </div>
+            <div class="pure-u-1-3">
+                <div id="stacked2" class="vis-container"></div>
             </div>
         </div>
         <!-- end pure grid group -->
 
-        <!-- pure grid group for map -->
+        <!-- pure grid group for fourth row -->
         <div class="pure-g">
-            <div class="pure-u-1-1">
-                <div id="map" class="vis-container"></div>
-              </div>
-        </div>
-        <!-- end pure grid group -->
-
-         <!-- pure grid group for second row of text -->
-         <div class="pure-g">
-            <div id="my_dataviz"></div>
+            <div class="pure-u-1-3">
+                <div class="description description-left">
+                    <h2>External assistance</h2>
+                    <p>USA are Ukraine's biggest benefactor by a large margin</p>
+                </div>
+            </div> 
+            <div class="pure-u-1-3">
+                <div id="alluvial" class="vis-container"></div>
+            </div>
          </div>
          <!-- end pure grid group -->
 
-        <!-- pure grid group for third row of charts-->
+         <!-- pure grid group for fifth row -->
+         <div class="pure-g">
+            <div class="pure-u-1-3">
+                <div class="description description-left">
+                    <h2>External assistance</h2>
+                    <p>USA are Ukraine's biggest benefactor by a large margin</p>
+                </div>
+            </div>
+            <div class="pure-u-2-3">
+                <div id="my_dataviz"></div>
+            </div>
+            
+         </div>
+         <!-- end pure grid group -->
+
+        <!-- pure grid group for sizth-->
          <div class="pure-g">
             <div class="pure-u-1-3">
                 <div id="vis1" class="vis-container"></div>
-              </div>
+            </div>
             <div class="pure-u-2-3">
                 <div id="chart4" class="vis-container"></div>
             </div>
         </div>
         <!-- end pure grid group -->
 
-        <!-- pure grid group for third row of text -->
+        <!-- pure grid group for seventh -->
         <div class="pure-g">
             <div class="pure-u-1-3">
                 <div class="description description-left">
@@ -123,7 +153,7 @@
 
     <script type="text/javascript">
         var radarcomparison = "Russia_Ukraine_Radar.json"
-        var financialaid = "stacked_bar.vg.json"
+        var financialaid = "support_alluvial.vg.json"
         var natomosaic = "NATO_mosaic.vg.json"
         var map1 = "military_spending.json"
         var parallelcoordinate = "parallel_coordinated.vg.json"
@@ -137,7 +167,7 @@
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        vegaEmbed('#stackedbar1', financialaid, { "actions": false }).then(function (result) {
+        vegaEmbed('#alluvial', financialaid, { "actions": false }).then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
@@ -158,7 +188,7 @@
 
         // set the dimensions and margins of the graph
         var margin = {top: 10, right: 10, bottom: 10, left: 10},
-          width = 445 - margin.left - margin.right,
+          width = 200 - margin.left - margin.right,
           height = 445 - margin.top - margin.bottom;
         
         // append the svg object to the body of the page
@@ -171,14 +201,14 @@
                 "translate(" + margin.left + "," + margin.top + ")");
         
         // Read data
-        d3.csv('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/army-total-world.csv', function(data) {
+        d3.csv('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/army-alliance.csv', function(data) {
         
           // stratify the data: reformatting for d3.js
           var root = d3.stratify()
-            .id(function(d) { return d.country; })   // Name of the entity (column name is name in csv)
-            .parentId(function(d) { return d.alliance; })   // Name of the parent (column name is parent in csv)
+            .id(function(d) { return d.Alliance; })   // Name of the entity (column name is name in csv)
+            .parentId(function(d) { return d.Parent; })   // Name of the parent (column name is parent in csv)
             (data);
-          root.sum(function(d) { return +d.total })   // Compute the numeric value for each entity
+          root.sum(function(d) { return +d.Total })   // Compute the numeric value for each entity
         
           // Then d3.treemap computes the position of each element of the hierarchy
           // The coordinates are added to the root object above
@@ -209,7 +239,8 @@
             .append("text")
               .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
               .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-              .text(function(d){ return d.data.country})
+              .text(function(d){ return d.data.Alliance})
+              .attr("font-family: 'Roboto', sans-serif")
               .attr("font-size", "15px")
               .attr("fill", "white")
         })
