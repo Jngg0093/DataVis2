@@ -1,0 +1,15 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Proportion of Military Spending to GDP" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/military_spending.csv"    
+    },
+    "mark": "bar",
+    "encoding": {
+        "x": {
+          "bin": {"step": 0.01},
+          "field": "2022"
+        },
+        "y": {"aggregate": "count"}
+      }
+}

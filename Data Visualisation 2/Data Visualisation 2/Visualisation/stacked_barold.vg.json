@@ -1,0 +1,45 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title":"Aid to Ukraine since the start of the Russia-Ukraine War",
+    "height": 500,
+    "width":500,
+    "params":[
+      {
+      "name": "Grouping",
+      "value": "Country",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Country",
+          "Alliance"
+        ],
+        "name": "Group by: "
+      }
+    }
+    ],
+    "data": {
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [{"fold": ["Financial commitments",
+      "Humanitarian commitments",
+      "Military commitments",
+      "Share in total EU commitments"]},
+      {
+      "calculate": "Grouping == 'Country' ? datum.Country : datum.Alliance",
+      "as": "YAxis"
+    }],
+      "layer":[
+      {"mark": "bar",
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "value"},
+        "y": {"field": "YAxis", "type":"nominal","sort":"-x"},
+        "color": {"field": "key"},
+        "tooltip":[
+        {"field":"Country", "type":"nominal"},
+        {"field":"Alliance", "type": "nominal"},
+        {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
+        ]
+        }}
+        ]
+    }

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Global reactions and preparadness towards the Russia-Ukraine War</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+
+    <link rel="stylesheet" href="styles.css" media="all">
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- pure grid group for title and subtitle-->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <h1>Russia-Ukraine War</h1>
+                <p>Russia's invasion of Ukraine on the 24th of February 2022 marked the biggest attack on a European country since WW2.
+                    This marked an escalation in the Russo-Ukraine War, the impact of which reverberated throughout the world.
+                    NATO, which is a military alliance between countries in Europe and North America, along with other allying countries, have showed their support to Ukraine.
+                    Let's look at how reliant Ukraine is on this external support in its bid to fight against Russia.
+                    </p>
+              </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for first row -->
+        <div class="pure-g">
+            <div class = "pure-u-1-1">
+                <div class="subtitle">
+                    <h2>The State of War</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div class="description description-left">
+                    <p>To fight against Russian forces, Ukraine have had to spend an extreme amount of their GDP
+                        far more than any other country in the world.
+                    </p>
+                </div>
+            </div>
+            <div class="pure-u-4-5">
+                <div id="map" class="vis-container"></div>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+    
+       <!-- pure grid group for second row -->
+       <div class="pure-g">
+            <div class = "pure-u-1-1">
+                <div class="subtitle">
+                    <h2>Levelling the playing field</h2>
+                </div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div class="description description-left">
+                    <p>There is a massive disparity in the military strength and spending between Russia and Ukraine, with Russia being the overwhelmingly dominant force of the two.
+                        Whilst the situation for Ukraine looks bleak, they have been able to hold their own with the help of their allying countries.
+                        Even with the highest military spending per GDP the world had seen, both in 2023 and in the past decade,
+                        Ukraine relied heavily on external assistance to match and surpass Russia.
+                        Over 60% of Ukraine's military spending to fight against Russia came from the support of allying countries.
+                    </p>
+                </div>
+              </div>
+            <div class="pure-u-2-5">
+                <div id="radar" class="vis-container"></div>
+            </div>
+            <div class="pure-u-2-5">
+                <div id="budgetcomparison" class="vis-container"></div>
+            </div>
+
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for third row -->
+        <div class="pure-g">
+            <div class = "pure-u-1-1">
+                <div class="subtitle">
+                    <h2>External assistance</h2>
+                </div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div class="description description-left">
+                    <p> The aid Ukraine received came from all over the world, and from both NATO and non-NATO countries.
+                    </p>
+                </div>
+            </div>
+           
+            <div class="pure-u-3-5">
+                <div class="description description-left">
+                    <button id="OverviewButton">Overview</button>
+                    <button id="AllianceButton">Alliance View</button>
+                    <button id="PerCountryButton">Country View</button>
+                </div>
+                <div id="financialaid" class="vis-container"></div>
+                <div id="natoaid" class="vis-container" style="display: none;"></div>
+                <div id="natoaiddetailed" class="vis-container" style="display: none;"></div>
+            </div>
+            <div class="pure-u-1-5">
+                
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group for fourth row -->
+        <div class="pure-g">
+            <div class = "pure-u-1-1">
+                <div class="subtitle">
+                    <h2>World War 3?</h2>
+                </div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-5">
+                <div class="description description-left">
+                    <p>Should the situation between Russia and Ukraine escalate further</p>
+                </div>
+            </div> 
+            <div class="pure-u-2-5">
+                <div id="my_dataviz" class="vis-container"></div>
+            </div>
+            <div class="pure-u-2-5">
+                <div id="nukeoverall" class="vis-container"></div>
+            </div>
+        </div>
+         <!-- end pure grid group -->
+    
+    </div>
+</body>
+    <script src="events.js"></script>
+    <script type="text/javascript">
+        var radarcomparison = "RussiavsUkraine.vg.json"
+        var financialaid = "support_alluvial.vg.json"
+        var spendingtime = "military_spending_over_time.vg.json"
+        var map1 = "military_spending_combined.json"
+        var parallelcoordinate = "parallel_coordinated.vg.json"
+        var budgetcomparison = "budget_comparison.vg.json"
+        var nukeoverall = "atomic_weapons.vg.json"
+        var nukeyear = "atomic_weapons_yearly.vg.json"
+        var natocompare = "NATOaid.vg.json"
+        var natocomparedetail = "NATOaidDetailed.vg.json";
+    
+        vegaEmbed('#radar', radarcomparison, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#budgetcomparison', budgetcomparison, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#financialaid', financialaid, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#spend', spendingtime, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#map', map1, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#nukeyear', nukeyear, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#nukeoverall', nukeoverall, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#natoaid', natocompare, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#natoaiddetailed', natocomparedetail, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+    
+      </script>
+    <script>
+
+        // set the dimensions and margins of the graph
+        var margin = {top: 10, right: 10, bottom: 10, left: 10},
+          width = 200 - margin.left - margin.right,
+          height = 445 - margin.top - margin.bottom;
+        
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+        .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+          .attr("transform",
+                "translate(" + margin.left + "," + margin.top + ")");
+        
+        // Read data
+        d3.csv('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/army-alliance.csv', function(data) {
+        
+          // stratify the data: reformatting for d3.js
+          var root = d3.stratify()
+            .id(function(d) { return d.Alliance; })   // Name of the entity (column name is name in csv)
+            .parentId(function(d) { return d.Parent; })   // Name of the parent (column name is parent in csv)
+            (data);
+          root.sum(function(d) { return +d.Total })   // Compute the numeric value for each entity
+        
+          // Then d3.treemap computes the position of each element of the hierarchy
+          // The coordinates are added to the root object above
+          d3.treemap()
+            .size([width, height])
+            .padding(4)
+            (root)
+        
+        console.log(root.leaves())
+          // use this information to add rectangles:
+          svg
+            .selectAll("rect")
+            .data(root.leaves())
+            .enter()
+            .append("rect")
+              .attr('x', function (d) { return d.x0; })
+              .attr('y', function (d) { return d.y0; })
+              .attr('width', function (d) { return d.x1 - d.x0; })
+              .attr('height', function (d) { return d.y1 - d.y0; })
+              .style("stroke", "black")
+              .style("fill", "#69b3a2");
+        
+          // and to add the text labels
+          svg
+            .selectAll("text")
+            .data(root.leaves())
+            .enter()
+            .append("text")
+              .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
+              .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
+              .text(function(d){ return d.data.Alliance})
+              .attr("font-family: 'Roboto', sans-serif")
+              .attr("font-size", "15px")
+              .attr("fill", "white")
+        })
+        </script>
+</html>
