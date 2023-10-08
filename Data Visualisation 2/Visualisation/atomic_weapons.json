@@ -1,0 +1,51 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Nuclear Weapons Stockpile Worldwide Over Time",
+    "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/nuclear-warhead-stockpiles-lines.csv"},
+    "vconcat":[
+      {
+        "width": "container",
+        "height": 210,
+        "mark": "area",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "axis": {
+              "title": "", 
+              "format": "%Y"
+              },
+            "scale": {"domain": {"param": "brush"}}
+          },
+          "y": {
+            "aggregate": "sum", "field": "nuclear_weapons_stockpile",
+            "title": "Total Nuclear Weapons Stockpile"
+          },
+          "color": {
+            "field": "Entity"
+          }
+        }
+      },
+      {
+        "width": "container",
+        "height": 40,
+        "mark": "line",
+        "params": [
+          {"name": "brush", "select": {"type": "interval",
+          "encodings": ["x"]}}
+          ],
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "temporal",
+            "axis": {"format": "%Y"}
+          },
+          "y": {
+            "aggregate": "sum", "field": "nuclear_weapons_stockpile",
+            "axis": {"tickCount": 3, "grid": false, "title": null}
+          }
+        }
+      }
+    ]
+    
+  }

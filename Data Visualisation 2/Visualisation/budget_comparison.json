@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Military Budget Comparison In 2022: Russia vs Ukraine",
+  "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/budgetcomparison.csv"},
+  "width": "container",
+  "height": 350,
+  "transform": [
+    {"fold": ["Financial Budget ($ billion)","Aid"]},
+    {"calculate": "datum.Country+datum.key", "as": "key1"},
+    {"calculate": "'$' + format(datum.value, '.2f') + ' Billion'", "as": "tooltiptext"}
+  ],
+  "layer":[
+    {"mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "Country",
+        "type": "nominal",
+        "title": "Country"
+      },
+      "y": {
+        "aggregate": "sum",
+        "field":"value",
+        "type": "quantitative",
+        "title": "Military Spending (USD$ billion)"
+      },
+      "color": {
+        "field": "key1",
+        "type": "nominal",
+        "scale": {
+            "domain": ["UkraineFinancial Budget ($ billion)", "RussiaFinancial Budget ($ billion)", "UkraineAid"],
+            "range": ["#0066cc","#E4181C", "green"]
+          },
+        "title": "Budget Source",
+        "legend": {"labelExpr": "datum.label == 'UkraineFinancial Budget ($ billion)' ? 'Ukrainian Budget': datum.label == 'RussiaFinancial Budget ($ billion)' ? 'Russian Budget': 'Foreign Aid'"}
+      },
+      "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "tooltiptext", "type": "nominal", "title": "Military Spending: "}
+      ]
+    }
+  },
+  {"transform": [
+    {"aggregate":[{"op": "sum",
+    "field": "value", "as": "grouped"}],
+    "groupby": ["Country"]
+    },
+    {
+      "calculate": "'$' + format(datum.grouped, '.2f') + ' billion'",
+      "as": "format_text"
+    }
+  ],
+    "mark": {
+    "type": "text",
+    "align": "center",
+    "dy": -8,
+    "baseline": "middle",
+    "fontStyle": "bold"
+  },
+  "encoding": {
+    "text": {
+    "field":"format_text"
+  },
+    "x": {"field": "Country"},
+    "y":{
+    "field":"grouped",
+    "type": "quantitative"}
+  }
+  }
+  ]
+}

@@ -1,6 +1,5 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Military Spending By Each Country In 2022",
     "config":{
       "view": {"stroke":"transparent"}
     },
@@ -18,7 +17,8 @@
       }
     ],
     "hconcat":[{
-      "width": "container",
+      "title": "Military Spending By Each Country from 2013 to 2022",
+      "width": 625,
       "height": 400,
       "projection": {"type": "equalEarth"},
       "data": {
@@ -157,8 +157,8 @@
         ]
     },
     {
-      "width": "container",
-      "height": 200,
+      "width": 415,
+      "height": 350,
       "title": {"text": "Military Spending Per GDP 2000 - 2022"},
       "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/spending_gdp_time.csv"},
       "transform": [
