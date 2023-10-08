@@ -1,5 +1,6 @@
 body *{
     font-family: 'Roboto', sans-serif;
+    text-align: justify;
   }
   
   h1 {
@@ -7,22 +8,31 @@ body *{
     font-weight: 400;
     font-family: 'Allerta Stencil', sans-serif;
   }
-  
-  body {
-    background-color: lightgrey;
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
   }
   
+  body {
+    background-color: white;
+  }
+  
+  .subtitle {
+    background-color: grey;
+  }
+
   .page {
-    width: 1200px;
-    background-color: lightgrey;
+    width: 1300px;
+    background-color: white;
     margin: auto;
     padding: 50px;
-    padding-top: px;
+    padding-top: 35px;
   }
   
   .vis-container {
     width: 100%;
-    max-height: 300px;
+    padding: 50 px;
     overflow: scroll;
     border: None;
   }
@@ -30,3 +40,28 @@ body *{
   .pure-g {
     margin-bottom: 40px;
   }
+
+
+
+
+.node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.link:hover {
+  stroke-opacity: .5;
+}
+        

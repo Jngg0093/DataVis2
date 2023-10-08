@@ -1,11 +1,12 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.2.json",
+  "title": "Aid to Ukraine Per Country Since The Start Of The Ukraine War",
   "height": 300,
   "width": 600,
   "data": [
     {
       "name": "table",
-      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv", "format": {"type":"csv"}
+      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/grouped_aid.csv", "format": {"type":"csv"}
     },
     {
       "name": "folded",
@@ -143,21 +144,10 @@
       "domain": {"data": "nodes", "field": "y1"}
     },
     {
-      "name": "y2",
-      "type": "linear",
-      "range": "height",
-      "domain": {"data": "originNodes", "field": "max_y1"}
-    },
-    {
-      "name": "color1",
+      "name": "color",
       "type": "ordinal",
       "range": "category",
-      "domain": {"data": "folded", "field": "key"}
-    },
-    {
-      "name": "color2",
-      "type": "threshold",
-      "range": ["lightgrey"]
+      "domain": {"data": "groups", "field": "grpId"}
     },
     {
       "name": "stackNames",
@@ -190,10 +180,10 @@
           "stroke": [
             {
               "test": "groupSelector && groupSelector.stack=='Country'",
-              "scale": "color1",
+              "scale": "color",
               "field": "key1"
             },
-            {"scale": "color1", "field": "key"}
+            {"scale": "color", "field": "key"}
           ],
           "strokeWidth": {"field": "strokeWidth"},
           "path": {"field": "path"},
@@ -212,32 +202,11 @@
     },
     {
       "type": "rect",
-      "name": "groupMark2",
-      "from": {"data": "groups"},
-      "encode": {
-        "enter": {
-          "fill": {"scale": "color2", "field": "grpId"},
-          "width": {"scale": "x", "band": 1}
-        },
-        "update": {
-          "x": {"scale": "x", "field": "stack"},
-          "y": {"field": "scaledY0"},
-          "y2": {"field": "scaledY1"},
-          "fillOpacity": {"value": 1},
-          "tooltip": {
-            "signal": "datum.grpId + '   ' + format(datum.total, ',.0f') + '   (' + format(datum.percentage, '.1%') + ')'"
-          }
-        },
-        "hover": {"fillOpacity": {"value": 1}}
-      }
-    },
-    {
-      "type": "rect",
       "name": "groupMark",
       "from": {"data": "groups"},
       "encode": {
         "enter": {
-          "fill": {"scale": "color1", "field": "grpId"},
+          "fill": {"scale": "color", "field": "grpId"},
           "width": {"scale": "x", "band": 1}
         },
         "update": {
@@ -330,7 +299,7 @@
     },
     {
       "type": "rect",
-      "from": {"data": "destinationNodes"},
+      "from": {"data": "nodes"},
       "encode": {
         "enter": {
           "stroke": {"value": "#000"},
@@ -341,21 +310,7 @@
           "y2": {"field": "y1", "scale": "y"}
         }
       }
-    },
-    {
-      "type": "rect",
-      "from": {"data": "originNodes"},
-      "encode": {
-        "enter": {
-          "stroke": {"value": "#000"},
-          "strokeWidth": {"value": 0.1},
-          "width": {"scale": "x", "band": 1},
-          "x": {"scale": "x", "field": "stack"},
-          "y": {"field": "min_y0", "scale": "y2"},
-          "y2": {"field": "max_y1", "scale": "y2"}
-        }
-        }
-        }
+    }
   ],
   "signals": [
     {

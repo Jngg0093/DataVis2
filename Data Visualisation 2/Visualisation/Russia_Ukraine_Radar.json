@@ -98,7 +98,7 @@
       "name": "color",
       "type": "ordinal",
       "domain": {"data": "table", "field": "Country"},
-      "range": ["#FFDD00","#E4181C"]
+      "range": ["#0066cc","#E4181C"]
     }
   ],
 

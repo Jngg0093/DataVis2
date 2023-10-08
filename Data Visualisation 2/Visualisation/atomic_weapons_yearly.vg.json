@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Nuclear Weapons Stockpile Per Country Over Time",
     "width": 300, 
     "height": 200,
     "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/nuclear-warhead-stockpiles-lines.csv"},
