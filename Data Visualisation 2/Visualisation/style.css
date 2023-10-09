@@ -9,13 +9,14 @@
     font-family: 'Allerta Stencil', sans-serif;
   }
 
+  body {
+    background-image: url('https://github.com/Jngg0093/DataVis2/blob/bd175765e0829c79e0b34bf497ef1933c8b9d4dd/Data%20Visualisation%202/Data/camo.jpg');
+    background-size: cover;
+  }
+
   h2 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
-  }
-  
-  body {
-    background-color: white;
   }
   
   .subtitle {
@@ -25,7 +26,7 @@
   .description {
     font-family: 'Roboto', sans-serif;
     font-size: medium;
-    padding-left: 20 px;
+    padding: 30px;
     text-align: justify;
   }
 

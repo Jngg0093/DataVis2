@@ -16,9 +16,9 @@
         }
       }
     ],
-    "hconcat":[{
+    "vconcat":[{
       "title": "Military Spending By Each Country from 2013 to 2022",
-      "width": 625,
+      "width": "container",
       "height": 400,
       "projection": {"type": "equalEarth"},
       "data": {
@@ -157,7 +157,7 @@
         ]
     },
     {
-      "width": 415,
+      "width": "container",
       "height": 350,
       "title": {"text": "Military Spending Per GDP 2000 - 2022"},
       "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/spending_gdp_time.csv"},
