@@ -1,0 +1,96 @@
+  body *{
+    font-family: 'Roboto', sans-serif;
+    text-align: justify;
+  }
+  
+  h1 {
+    font-size: 60px;
+    font-weight: 400;
+    font-family: 'Allerta Stencil', sans-serif;
+  }
+
+  body {
+    background-image: url('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/camo.jpg');
+    background-size: contain;
+  }
+
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+  }
+
+  .text1{
+    padding: 10px;
+  }
+  
+  .chartTitle{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: medium;
+  }
+
+  .subtitle {
+    background-color: grey;
+  }
+
+  .description {
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
+    padding-left: 10px;
+    padding-right: 20px;
+    text-align: justify;
+  }
+
+  .page {
+    width: 1100px;
+    background-color: white;
+    margin: auto;
+    padding: 25px;
+    padding-top: 35px;
+  }
+  
+  .vis-container {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 20px;
+    border: None;
+    overflow: hidden;
+  }
+
+  .overflow {
+    width: 100%;
+    height: 300px;
+    padding-right: 10px;
+    padding-left: 20px;
+    overflow: scroll;
+  }
+
+  .pure-g {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+
+
+
+  .node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+  }
+
+  .node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+  }
+
+  .link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+  }
+
+  .link:hover {
+    stroke-opacity: .5;
+  }
+        

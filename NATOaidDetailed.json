@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title":"Aid to Ukraine since the start of the Russia-Ukraine War",
+  "width":"container",
+  "height": 200,
+  "config": {"view": {
+    "stroke": "transparent"
+  }},
+  "params":[
+    {
+    "name": "Grouping",
+    "value": "Australia",
+    "bind": {
+      "input": "select",
+      "options": ["Australia", "Austria", "Belgium", "Bulgaria", "Canada", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Japan", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "New Zealand", "Norway", "Poland", "Portugal", "South Korea", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "United States", "Taiwan"],
+      "name": "Country: "
+    }
+  }
+  ],
+  "data": {
+      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [{"fold": ["Financial commitments",
+    "Humanitarian commitments",
+    "Military commitments",
+    "Share in total EU commitments"]},
+    {"filter": "datum.Country == Grouping"}
+  ],
+  "mark": {"type": "arc", "innerRadius": 50},
+  "encoding": {
+    "theta": {"field": "value", "type": "quantitative"},
+    "color": {"field": "key", "type": "nominal", "legend":{"orient": "left"}},
+    "tooltip":[
+      {"field":"Country", "type":"nominal"},
+      {"field":"Alliance", "type": "nominal"},
+      {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
+      ]
+      }
+      
+}
