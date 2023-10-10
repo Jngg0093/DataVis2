@@ -10,67 +10,87 @@
   }
 
   body {
-    background-image: url('https://github.com/Jngg0093/DataVis2/blob/bd175765e0829c79e0b34bf497ef1933c8b9d4dd/Data%20Visualisation%202/Data/camo.jpg');
-    background-size: cover;
+    background-image: url('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/camo.jpg');
+    background-size: contain;
   }
 
   h2 {
     font-family: 'Roboto', sans-serif;
     text-align: center;
   }
+
+  .text1{
+    padding: 10px;
+  }
   
+  .chartTitle{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    font-size: medium;
+  }
+
   .subtitle {
     background-color: grey;
   }
 
   .description {
     font-family: 'Roboto', sans-serif;
-    font-size: medium;
-    padding: 30px;
+    font-size: small;
+    padding-left: 10px;
+    padding-right: 20px;
     text-align: justify;
   }
 
   .page {
-    width: 1300px;
+    width: 1100px;
     background-color: white;
     margin: auto;
-    padding: 50px;
+    padding: 25px;
     padding-top: 35px;
   }
   
   .vis-container {
     width: 100%;
-    height: 400 px;
-    padding: 50 px;
-    overflow: scroll;
+    padding-right: 10px;
+    padding-left: 20px;
     border: None;
+    overflow: hidden;
+  }
+
+  .overflow {
+    width: 100%;
+    height: 300px;
+    padding-right: 10px;
+    padding-left: 20px;
+    overflow: scroll;
   }
 
   .pure-g {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
+    width: 100%;
   }
 
 
 
 
-.node rect {
-  cursor: move;
-  fill-opacity: .9;
-  shape-rendering: crispEdges;
-}
+  .node rect {
+    cursor: move;
+    fill-opacity: .9;
+    shape-rendering: crispEdges;
+  }
 
-.node text {
-  pointer-events: none;
-  text-shadow: 0 1px 0 #fff;
-}
+  .node text {
+    pointer-events: none;
+    text-shadow: 0 1px 0 #fff;
+  }
 
-.link {
-  fill: none;
-  stroke: #000;
-  stroke-opacity: .2;
-}
+  .link {
+    fill: none;
+    stroke: #000;
+    stroke-opacity: .2;
+  }
 
-.link:hover {
-  stroke-opacity: .5;
-}
+  .link:hover {
+    stroke-opacity: .5;
+  }
         

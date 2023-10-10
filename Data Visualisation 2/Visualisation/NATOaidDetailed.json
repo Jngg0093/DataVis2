@@ -1,15 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title":"Aid to Ukraine since the start of the Russia-Ukraine War",
-  "width":360,
-  
+  "width":"container",
+  "height": 200,
+  "config": {"view": {
+    "stroke": "transparent"
+  }},
   "params":[
     {
     "name": "Grouping",
-    "value": "All",
+    "value": "Australia",
     "bind": {
       "input": "select",
-      "options": ["All","Australia", "Austria", "Belgium", "Bulgaria", "Canada", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Japan", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "New Zealand", "Norway", "Poland", "Portugal", "South Korea", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "United States", "Taiwan"],
+      "options": ["Australia", "Austria", "Belgium", "Bulgaria", "Canada", "Croatia", "Cyprus", "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Japan", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "New Zealand", "Norway", "Poland", "Portugal", "South Korea", "Romania", "Slovakia", "Slovenia", "Spain", "Sweden", "Switzerland", "Turkey", "United Kingdom", "United States", "Taiwan"],
       "name": "Country: "
     }
   }
@@ -22,19 +25,17 @@
     "Humanitarian commitments",
     "Military commitments",
     "Share in total EU commitments"]},
-    {"filter": "Grouping != 'All' ? datum.Country == Grouping : datum.Country"}
+    {"filter": "datum.Country == Grouping"}
   ],
-    "layer":[
-    {"mark": "bar",
-    "encoding": {
-      "x": {"aggregate": "sum", "field": "value"},
-      "y": {"field": "Country", "type":"nominal","sort":"-x"},
-      "color": {"field": "key"},
-      "tooltip":[
+  "mark": {"type": "arc", "innerRadius": 50},
+  "encoding": {
+    "theta": {"field": "value", "type": "quantitative"},
+    "color": {"field": "key", "type": "nominal", "legend":{"orient": "left"}},
+    "tooltip":[
       {"field":"Country", "type":"nominal"},
       {"field":"Alliance", "type": "nominal"},
       {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
       ]
-      }}
-      ]
+      }
+      
 }

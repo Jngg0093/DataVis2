@@ -17,9 +17,8 @@
       }
     ],
     "vconcat":[{
-      "title": "Military Spending By Each Country from 2013 to 2022",
-      "width": "container",
-      "height": 400,
+      "width": 560,
+      "height": 300,
       "projection": {"type": "equalEarth"},
       "data": {
       "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/ne_110m.json",
@@ -71,7 +70,7 @@
               "scale": {
                   "type": "threshold",
                   "domain": [0.01, 0.02, 0.03, 0.04, 0.05, 0.1],
-                  "range":["#edf8fb", "#ccece6", "#99d8c9", "#66c2a4", "#41ae76", "#238b45", "#00441b"]
+                  "range":["#ffffd4", "#fee391", "#fec44f", "#fe9929", "#ec7014", "#cc4c02", "#8c2d04"]
                 },
               "legend": {
                   "title": "Spend (% of GDP)",
@@ -157,9 +156,8 @@
         ]
     },
     {
-      "width": "container",
-      "height": 350,
-      "title": {"text": "Military Spending Per GDP 2000 - 2022"},
+      "width": 560,
+      "height": 150,
       "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/spending_gdp_time.csv"},
       "transform": [
         {"fold": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]}
@@ -199,7 +197,7 @@
           "color": "black"
           },
           "encoding": {
-            "size":{"value":150},
+            "size":{"value":50},
             "x": {
               "field": "key",
               "type": "ordinal",
@@ -290,7 +288,8 @@
         "y": {
           "field": "value",
           "type": "quantitative",
-          "axis": {"title": "Military Spending Per GDP", "format": ".0%"}
+          "scale": {"domain":[0, 0.36]},
+          "axis": {"title": "Military Spending Per GDP", "format": ".0%", "labelPadding": 10 }
         },
         "tooltip": [
           {

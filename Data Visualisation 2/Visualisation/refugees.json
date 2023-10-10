@@ -1,10 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Estimated number of Ukranian Refugees as at 12 Sep ",
-  "config":{
-    "view": {"stroke":"transparent"}},
   "vconcat":[{
-    "width":700,
+    "width":400,
     "height": 400,
     "projection": {
       "type": "azimuthalEquidistant",
@@ -62,8 +60,9 @@
             "scale": {
                 "type": "threshold",
                 "domain": [0],
-                "range":["red", "green"]
-              }
+                "range":["green"]
+              },
+              "legend":null
             },
             "tooltip": [
             {"field": "properties.NAME", "type": "nominal", "title": "Country"},
@@ -72,28 +71,6 @@
         }
       },
       {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugeescleaned.csv"
-      },
-      "mark": "circle",
-      "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
-        "size": {"field": "Number of refugees", "scale": {
-                "type": "threshold",
-                "domain": [50000, 100000, 500000, 1000000],
-                "range":[10, 30, 50, 70, 100]
-              }},
-        "color": {"value": "Black"}
-      }
-    },
-    {
       "data": {
         "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugeescleaned.csv"
       },
@@ -119,7 +96,7 @@
         "longitude2": {"field": "longitude"},
         "latitude2": {"field": "latitude"},
         "color": {
-          "condition": {"param":"pts", "empty": false, "value":"black"},
+          "condition": {"param":"pts", "empty": false, "value":"#0066cc"},
           "value": "grey"
         },
         "strokeWidth": {"condition":
@@ -127,44 +104,53 @@
           "value": 1
         }
       }
-    }, 
-    {
+      },
+      {
       "data": {
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/Russia-Ukraine-Location.csv"    
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugeescleaned.csv"
+      },
+      "mark": "circle",
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
         },
-        "encoding": {
-        "color": {"value": "black"},
-        "longitude": {"field": "Longitude", "type":"quantitative"},
-        "latitude": {"field": "Latitude", "type": "quantitative"},
-        "opacity": {
-          "condition": {
-            "test": "datum.Country == 'Ukraine'",
-            "value": 1
-          },
-          "value": 0
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
         },
-        "tooltip": [
-          {"field": "Country", "type": "nominal", "title": "Country"},
-          {"field": "2022", "type": "quantitative", "format":".2%", "title":"Spend (% of GDP)"}
-          ]
+        "size": {"field": "Number of refugees", "scale": {
+                "type": "threshold",
+                "domain": [50000, 100000, 500000, 1000000],
+                "range":[10, 30, 50, 70, 100]
+              }},
+        "color": {
+          "condition": {"param":"pts", "empty": false, "value":"#0066cc"},
+          "value": "black"
         },
-        "layer":[{
-          "mark": {
-            "type": "circle"
-        }
+        "opacity": {"value":1}
+      }
+      }, 
+      {
+      "data": {
+        "values": [{"longitude":"31.1656", "latitude":"48.3794", "text": "There are approximately 5,828,635 Ukranian refugees since Russia's invasion"}]
+      },
+      "mark": {"type":"point", "shape":"cross", "size": 75, "fill":"#0066cc", "opacity": 1},
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
         },
-        {"mark": {
-        "type": "text",
-        "align": "left",
-        "baseline": "middle",
-        "fontSize": 12,
-        "dy": -10
-        }}]
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+        "color": {"value": "#0066cc"}
+      }
       }
     ]
   },
-    {"width": 800,
-"description": "A scatterplot showing horsepower and miles per gallons for various cars.",
+    {"width": 600,
  "params":[
     {"name":"pts", "select": {"type":"point", "fields": ["Country"]}}
   ],

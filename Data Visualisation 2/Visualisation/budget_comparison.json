@@ -2,8 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Military Budget Comparison In 2022: Russia vs Ukraine",
   "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/budgetcomparison.csv"},
-  "width": "container",
-  "height": 350,
+  "width": 300,
+  "height": 300,
   "transform": [
     {"fold": ["Financial Budget ($ billion)","Aid"]},
     {"calculate": "datum.Country+datum.key", "as": "key1"},

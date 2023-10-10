@@ -30,12 +30,14 @@
         <div class="pure-g">
             <div class="pure-u-1-1">
                 <h1>Russia-Ukraine War</h1>
-                <p>Russia's invasion of Ukraine on the 24th of February 2022 marked the biggest attack on a European country since WW2.
-                    This further esclation in the Russo-Ukraine War provoked NATO (a military alliance between countries in Europe and North America), 
-                    along with other allying countries to step in and provide support to Ukraine in many different ways.
-                    This visualisation will explore the current balance of the Russo-Ukraine War, and the roles that external countries are playing
-                    in the fight against Russia.
-                    </p>
+                <div class="text1">
+                    <p>Russia's invasion of Ukraine on the 24th of February 2022 marked the biggest attack on a European country since WW2.
+                        This further esclation in the Russo-Ukraine War provoked NATO (a military alliance between countries in Europe and North America), 
+                        along with other allying countries to step in and provide support to Ukraine in many different ways.
+                        This visualisation will explore the current balance of the Russo-Ukraine War, and the roles that external countries are playing
+                        in the fight against Russia.
+                        </p>
+                    </div>
               </div>
         </div>
         <!-- end pure grid group -->
@@ -52,24 +54,26 @@
         <div class="pure-g">
             <div class="pure-u-1-4">
                 <div class="description">
-                    <p>Within the past decade, countries in Africa and the Middle East have shown the highest military spend as a proportion of GDP globally per year.
+                    <p>Within the past decade, countries in Africa and the Middle East have shown consistently spent the highest proportion of their GDP on their military.
                     </p>
                 </div>
                 <div class="description">
-                    <p>To fight against the Russian invasion, Ukraine had recorded highest military spend as a proportion of GDP in the whole world in 2022.
+                    <p>To fight against the Russian invasion in 2022, Ukraine recorded the highest military spend globally as a proportion of GDP at an extremely high value of
+                        33.55%.
                     </p>
                 </div>
                 <div class="description">
-                    <p>No country has even come close to this amount of spending in the past 10 years.
+                    <p> No country has come close to this amount of spending in the past decade.
                     </p>
                 </div>
                 <div class="description">
-                    <p>In stark contrast, Russia has had a very minor rise in military spending as a proportion of GDP from 2021 to 2022.
-                       This is most likely a result of the massive disparity in country size (and GDP), with Ukraine the clear underdog in this war.
+                    <p> Surprisingly, Russia's military spending as a proportion of GDP has hardly increased from its previous years.
+                       This is most likely a result of the massive disparity in country size, with Ukraine the clear underdog in this war.
                     </p>
                 </div>
             </div>
             <div class="pure-u-3-4">
+                <p class="chartTitle">Military Spending By Each Country from 2013 to 2022</p>
                 <div id="map" class="vis-container"></div>
             </div>
         </div>
@@ -84,36 +88,45 @@
             </div>
         </div>
         <div class="pure-g">
-            <div class="pure-u-1-3">
-                <p>Russia vs Ukraine 2022</p>
+            <div class="pure-u-1-4">
+                <div class="description">
+                    <p>The massive disparity in the military might between Russia and Ukraine is clear in all aspects of the military, 
+                        including spending, army size, land and air units, and artillery.
+                        </p>
+                </div>
+                <div class="description">
+                    <p> Whilst Russia is the overwhelmingly dominant force of the two, Ukraine have been able to hold their own with the help of their allying countries.
+                        </p>
+                </div>
+                
+              </div>
+            <div class="pure-u-3-4">
+                <p class="chartTitle">Russia vs Ukraine 2022</p>
                 <div id="radar" class="vis-container"></div>
-            </div>
-            <div class="pure-u-1-3">
-                <p>Total Army Size by Alliance in 2022</p>
-                <div id="my_dataviz" class="vis-container"></div>
-            </div>
-            <div class="pure-u-1-3">
-                <div id="budgetcomparison" class="vis-container"></div>
             </div>
         </div>
         <div class="pure-g"> 
-            <div class="pure-u-1-3">
+            <div class="pure-u-1-4">
                 <div class="description">
-                    <p>TThe massive disparity in the military might between Russia and Ukraine is clear in all aspects of the military, 
-                        including spending, army size, land and air units, and artillery.
-                        Whilst Russia is the overwhelmingly dominant force of the two, Ukraine have been able to hold their own with the help of their allying countries.
-                        The military spending budget alone displays Ukraine reliance on external assistance to have any chance to match and surpass Russia.
-                        Almost 65% of Ukraine's military spending to fight against Russia came from the support of allying countries.
-                    </p>
-                </div> 
-              </div>
-            <div class="pure-u-1-3">
-                <div class="description">
-                    <p>TUkraine's military spending to fight against Russia came from the support of allying countries.
-                    </p>
+                    <p> Crucially, Ukraine have been backed and supported by other countries within NATO. 
+                        Should the conflict escalate and involve other countries, Ukraine can be comforted that NATO's countries currently
+                        possess a large army than Russia and their allies (through the CSTO alliance).
+                        </p>
                 </div>
-            </div>
-            
+                <div class="description">
+                    <p> Ukraine's further dependence on support by other countries can be further seen in the military spending budget compared to Russia.
+                        Almost 65% of Ukraine's military spending to fight against Russia came from the support of allying countries.
+                        Without this, Ukraine would not have any chance to match or surpass Russia.
+                        </p>
+                    </div>
+                </div>
+            <div class="pure-u-1-4">
+                    <p class="chartTitle">Total Army Size by Alliance in 2022</p>
+                    <div id="my_dataviz" class="vis-container"></div>
+                </div>
+            <div class="pure-u-1-2">
+                    <div id="budgetcomparison" class="vis-container"></div>
+                </div>
         </div>
         <!-- end pure grid group -->
 
@@ -126,24 +139,37 @@
             </div>
         </div>
         <div class="pure-g">
-            <div class="pure-u-1-2">
-                <div class="description">
-                    <button id="OverviewButton">Overview</button>
-                    <button id="AllianceButton">Alliance View</button>
-                    <button id="PerCountryButton">Country View</button>
-                </div>
-                <div id="financialaid" class="vis-container"></div>
-                <div id="natoaid" class="vis-container" style="display: none;"></div>
-                <div id="natoaiddetailed" class="vis-container" style="display: none;"></div>
+            <div class="pure-u-1-4">
                 <div class="description">
                     <p> The external aid to Ukraine came from countries all over the world, with the biggest benefactors including the United States,
                         the United Kingdom, Germany, and France. 
-                        Received assistance was not limited to NATO countries, with several non-NATO showing their support as well countries.
-                        Apart from financial aid, several countries, predominantly countries in Europe around Ukraine, also provided refugee programs to Ukranians impacted by the war. 
-                        Surprisingly, Russia has recorded the most number of individuals granted refugee, followed by Germany and Poland.
+                        </p>
+                </div>
+            </div>
+            <div class="pure-u-3-4">
+                <div id="financialaid" class="vis-container"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1-4">
+                <div class="description">
+                    <p> Received assistance was not limited to NATO countries, with several non-NATO showing their support as well countries.
                     </p>
                 </div>
             </div>
+            <div class="pure-u-9-24">
+                <div class="description">
+                    <button id="AllianceButton">Alliance View</button>
+                    <button id="PerCountryButton">Country View</button>
+                </div>
+                <div class="overflow">
+                    <div id="natoaid" class="vis-container"></div>
+                    <div id="aidcountry" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="pure-u-9-24">
+                    <div id="aiddetailed" class="vis-container"></div>
+                </div> 
         </div>
         <!-- end pure grid group -->
 
@@ -157,11 +183,10 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1-4">
-                    <p> The external aid to Ukraine came from countries all over the world, with the biggest benefactors including the United States,
-                        the United Kingdom, Germany, and France. 
-                        Received assistance was not limited to NATO countries, with several non-NATO showing their support as well countries.
-                        Apart from financial aid, several countries, predominantly countries in Europe around Ukraine, also provided refugee programs to Ukranians impacted by the war. 
-                        Surprisingly, Russia has recorded the most number of individuals granted refugee, followed by Germany and Poland.
+                    <p> Apart from financial aid, several countries, predominantly countries in Europe around Ukraine, also provided refugee programs to Ukranians impacted by the war. 
+                    </p>
+                    <img src="https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/zoom.png" class="vis-container">
+                    <p> Surprisingly, Russia has recorded the most number of individuals granted refugee, followed by Germany and Poland.
                     </p>
                 </div>
             <div class="pure-u-3-4">
@@ -182,6 +207,7 @@
         var budgetcomparison = "budget_comparison.json";
         var natocompare = "NATOaid.json";
         var natocomparedetail = "NATOaidDetailed.json";
+        var aidcountry = "NATOaidCountry.json";
         var refugees = "refugees.json";
     
         vegaEmbed('#radar', radarcomparison, { "actions": false }).then(function (result) {
@@ -208,11 +234,15 @@
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
-        vegaEmbed('#natoaiddetailed', natocomparedetail, { "actions": false }).then(function (result) {
+        vegaEmbed('#aiddetailed', natocomparedetail, { "actions": false }).then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
         vegaEmbed('#refugee', refugees, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#aidcountry', aidcountry, { "actions": false }).then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
@@ -222,8 +252,8 @@
 
         // set the dimensions and margins of the graph
         var margin = {top: 10, right: 10, bottom: 10, left: 10},
-          width = 600 - margin.left - margin.right,
-          height = 200 - margin.top - margin.bottom;
+          width = 250 - margin.left - margin.right,
+          height = 300 - margin.top - margin.bottom;
         
         // append the svg object to the body of the page
         var svg = d3.select("#my_dataviz")
@@ -273,10 +303,13 @@
             .append("text")
               .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
               .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-              .text(function(d){ return d.data.Alliance})
+              .text(function(d){ return d.data.Alliance + d.data.Total})
               .attr("font-family: 'Roboto', sans-serif")
               .attr("font-size", "15px")
-              .attr("fill", "white")
+              .attr("fill", "white");
+            
+          svg.append("text")
+            .text(function(d){return d.data.Alliance + ' had a total army size of ' + d.data.Total})
         })
         </script>
 </html>
