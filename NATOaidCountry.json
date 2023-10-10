@@ -1,7 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title":"Aid to Ukraine since the start of the Russia-Ukraine War",
-    "width":"container",
+    "width":300,
     "height": 500,
     "data": {
         "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv",

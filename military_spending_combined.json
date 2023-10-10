@@ -17,8 +17,7 @@
       }
     ],
     "vconcat":[{
-      "width": 560,
-      "height": 300,
+      "width": "container",
       "projection": {"type": "equalEarth"},
       "data": {
       "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/ne_110m.json",

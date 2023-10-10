@@ -50,11 +50,10 @@
   }
   
   .vis-container {
-    width: 100%;
+    width: 600px;
     padding-right: 10px;
     padding-left: 20px;
     border: None;
-    overflow: hidden;
   }
 
   .overflow {

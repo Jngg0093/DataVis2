@@ -144,6 +144,8 @@
                     <p> The external aid to Ukraine came from countries all over the world, with the biggest benefactors including the United States,
                         the United Kingdom, Germany, and France. 
                         </p>
+                    <p> Received assistance was not limited to NATO countries, with several non-NATO showing their support as well countries.
+                        </p>
                 </div>
             </div>
             <div class="pure-u-3-4">
@@ -151,13 +153,10 @@
             </div>
         </div>
         <div class="pure-g">
-            <div class="pure-u-1-4">
-                <div class="description">
-                    <p> Received assistance was not limited to NATO countries, with several non-NATO showing their support as well countries.
-                    </p>
-                </div>
+            <div class = "pure-u-1-1">
+                <p class="chartTitle">Aid to Ukraine since the start of the Russia-Ukraine War</p>
             </div>
-            <div class="pure-u-9-24">
+            <div class="pure-u-1-2">
                 <div class="description">
                     <button id="AllianceButton">Alliance View</button>
                     <button id="PerCountryButton">Country View</button>
@@ -167,7 +166,7 @@
                     <div id="aidcountry" style="display: none;"></div>
                 </div>
             </div>
-            <div class="pure-u-9-24">
+            <div class="pure-u-1-2">
                     <div id="aiddetailed" class="vis-container"></div>
                 </div> 
         </div>
@@ -303,13 +302,23 @@
             .append("text")
               .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
               .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-              .text(function(d){ return d.data.Alliance + d.data.Total})
+              .text(function(d){ return d.data.Alliance})
               .attr("font-family: 'Roboto', sans-serif")
               .attr("font-size", "15px")
               .attr("fill", "white");
+
+          svg
+            .selectAll("text")
+            .data(root.leaves())
+            .enter()
+            .append("text")
+              .attr("x", function(d){ return d.x0+15})    // +10 to adjust position (more right)
+              .attr("y", function(d){ return d.y0+35}) 
+              .text(function(d){return d.data.Alliance + ' had a total army size of ' + d.data.Total})
+              .attr("font-family: 'Roboto', sans-serif")
+              .attr("font-size", "12px")
+              .attr("fill", "white");
             
-          svg.append("text")
-            .text(function(d){return d.data.Alliance + ' had a total army size of ' + d.data.Total})
         })
         </script>
 </html>

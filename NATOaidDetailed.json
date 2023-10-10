@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title":"Aid to Ukraine since the start of the Russia-Ukraine War",
-  "width":"container",
+  "width":300,
   "height": 200,
   "config": {"view": {
     "stroke": "transparent"
@@ -27,15 +26,41 @@
     "Share in total EU commitments"]},
     {"filter": "datum.Country == Grouping"}
   ],
-  "mark": {"type": "arc", "innerRadius": 50},
-  "encoding": {
-    "theta": {"field": "value", "type": "quantitative"},
-    "color": {"field": "key", "type": "nominal", "legend":{"orient": "left"}},
-    "tooltip":[
-      {"field":"Country", "type":"nominal"},
-      {"field":"Alliance", "type": "nominal"},
-      {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
-      ]
-      }
+  "layer":[{
+    "mark": {"type": "arc", "innerRadius": 50},
+    "encoding": {
+      "theta": {"field": "value", "type": "quantitative"},
+      "color":{"field": "key", "type": "nominal","scale":{"domain":["Financial commitments",
+      "Humanitarian commitments",
+      "Military commitments",
+      "Share in total EU commitments"], "range":["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3"]},"legend":{"orient": "left"}},
+      "tooltip":[
+        {"field":"Country", "type":"nominal"},
+        {"field":"Alliance", "type": "nominal"},
+        {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
+        ]
+        }
+  },
+  {"transform": [
+    {
+      "aggregate": [{"op":"sum", "field": "value", "as":"total"}],
+      "groupby": ["Country"]
+    },
+    {
+      "calculate": "'Total aid:;$' + format(datum.total, '.2f') + ' billion'",
+      "as": "rawtext"
+    },
+    {
+      "calculate": "split(datum.rawtext,';')",
+      "as": "text_annotation"
+    }
+  ],
+    "mark":{"type":"text"},
+    "encoding":{
+      "text": {"field": "text_annotation"}
+    } 
+  }
+  ]
+ 
       
 }
