@@ -15,7 +15,8 @@
       "x": {
         "field": "Country",
         "type": "nominal",
-        "title": "Country"
+        "title": "Country",
+        "axis":{"labelAngle":0}
       },
       "y": {
         "aggregate": "sum",

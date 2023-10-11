@@ -1,7 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width":300,
-  "height": 200,
+  "width":"container",
   "config": {"view": {
     "stroke": "transparent"
   }},
@@ -98,7 +97,7 @@
   }
   ],
   "data": {
-      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/stacked_bar.csv",
+      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/financialaid.csv",
       "format": {"type": "csv"}
     },
     "transform": [{"fold": ["Financial commitments",
@@ -136,7 +135,7 @@
       "as": "text_annotation"
     }
   ],
-    "mark":{"type":"text"},
+    "mark":{"type":"text", "dy": -7},
     "encoding":{
       "text": {"field": "text_annotation"}
     } 

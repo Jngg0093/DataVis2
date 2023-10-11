@@ -1,7 +1,5 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "width": 600,
-  "height": 350,
   "autosize": {"type": "none", "contains": "padding"},
 
   "signals": [
@@ -10,7 +8,7 @@
 
   "data": [
         {"name":"table", 
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/RussiavsUkraine%20copy.csv",
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/RussiavsUkraine.csv",
         "format": {"type": "csv"}     
         },
         {
@@ -88,7 +86,7 @@
     {
       "name": "color",
       "type": "ordinal",
-      "domain": {"data": "table", "field": "Country"},
+      "domain": ["Ukraine", "Russia"],
       "range": ["#005AB5","#DC3220"]
     }
   ],
@@ -125,10 +123,12 @@
               "x": {"signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"},
               "y": {"signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"},
               "stroke": {"scale": "color", "field": "Country"},
-              "strokeWidth": {"value": 1}
+              "strokeWidth": {"value": 1},
+              "fill":{"scale": "color", "field": "Country"},
+              "fillOpacity": {"value": 0.1}
             }
           },
-          "zindex": 1
+          "zindex": 0
         },
         {
           "type": "symbol",
@@ -172,8 +172,8 @@
       "zindex": 1,
       "encode": {
         "enter": {
-          "x": {"signal": "(width / 2 - radius) + (150 * cos(scale('angular', datum.key)))"},
-          "y": {"signal": "(height / 2 - radius) + (150 * sin(scale('angular', datum.key)))"},
+          "x": {"signal": "(width / 2 - radius) + ((radius + 10) * cos(scale('angular', datum.key)))"},
+          "y": {"signal": "(height / 2 - radius) + ((radius + 10) * sin(scale('angular', datum.key)))"},
           "text": {"field": "key"},
           "align": [
             {
@@ -196,7 +196,8 @@
             }
           ],
           "fill": {"value": "black"},
-          "fontWeight": {"value": "bold"}
+          "fontWeight": {"value": "bold"},
+          "fontSize": {"value": 10}
         }
       }
     },

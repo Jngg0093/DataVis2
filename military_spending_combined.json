@@ -16,7 +16,7 @@
         }
       }
     ],
-    "vconcat":[{
+    "hconcat":[{
       "width": "container",
       "projection": {"type": "equalEarth"},
       "data": {

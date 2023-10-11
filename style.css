@@ -7,6 +7,13 @@
     font-size: 60px;
     font-weight: 400;
     font-family: 'Allerta Stencil', sans-serif;
+    text-align: center;
+    background-color: #bebebe;
+    height: 80px;
+    margin: auto;
+    padding: 30px 0;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
   }
 
   body {
@@ -22,6 +29,14 @@
   .text1{
     padding: 10px;
   }
+
+  .subsection{
+    border-radius: 25px;
+    background-color: white;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
   
   .chartTitle{
     font-family: 'Roboto', sans-serif;
@@ -30,31 +45,59 @@
   }
 
   .subtitle {
-    background-color: grey;
+    background-color: #bebebe;
+    height: 60px;
+    margin: auto;
+    padding: 20px 0;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
   }
 
-  .description {
+  .description-left {
     font-family: 'Roboto', sans-serif;
-    font-size: small;
-    padding-left: 10px;
+    font-size: medium;
+    padding-left: 40px;
     padding-right: 20px;
+    text-align: left;
+  }
+
+  .description-right {
+    font-family: 'Roboto', sans-serif;
+    font-size: medium;
+    padding-left: 20px;
+    padding-right: 40px;
     text-align: left;
   }
 
   .page {
     width: 1100px;
-    background-color: white;
+    background-color: #e3e0d5;
     margin: auto;
-    padding: 25px;
-    padding-top: 35px;
+    padding: 20px;
+    padding-top: 20px;
   }
   
   .vis-container {
-    width: 100%;
-    padding-right: 10px;
-    padding-left: 20px;
+    width: calc(100% - 80px);
+    margin-right: 40px;
+    margin-left: 40px;
     border: None;
   }
+
+  .vis-container-left {
+    width: calc(100% - 60px);
+    margin-right: 20px;
+    margin-left: 40px;
+    border: None;
+  }
+
+  .vis-container-right {
+    width: calc(100% - 60px);
+    margin-right: 40px;
+    margin-left: 20px;
+    border: None;
+  }
+  
 
   .image{
     width: 100%
@@ -62,5 +105,8 @@
 
   .pure-g {
     margin-bottom: 10px;
-    width: 100%;
   }
+
+#refugee{
+  width: 100%;
+}

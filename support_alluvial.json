@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.2.json",
-  "title": "Aid to Ukraine Per Country Since The Start Of The Ukraine War",
+  "title": {"text":"Aid to Ukraine Per Country Since The Start Of The Ukraine War", "offset": 15},
   "height": 300,
   "width": 670,
   "data": [
@@ -162,12 +162,12 @@
       "scale": "x",
       "encode": {
         "labels": {
-          "update": {"text": {"scale": "stackNames", "field": "value"}}
+          "update": {"text": {"value":""}}
         }
       }
     },
-    {"orient": "left", "scale": "y"},
-    {"orient": "right", "scale": "y"}
+    {"orient": "left", "scale": "y", "title": "Aid to Ukraine ($USD billion)"},
+    {"orient": "right", "scale": "y", "title": "Aid Received ($USD billion)"}
   ],
   "marks": [
     {
