@@ -49,9 +49,10 @@
                     <h2>The State of War</h2>
                 </div>
             </div>
-        </div>
-
-        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <p class="chartTitle">Military Spending By Each Country from 2013 to 2022</p>
+                <div id="map" class="vis-container" style="height: 500px;"></div>
+            </div>
             <div class="pure-u-1-4">
                 <div class="description">
                     <p>Within the past decade, countries in Africa and the Middle East have shown consistently spent the highest proportion of their GDP on their military.
@@ -71,10 +72,6 @@
                        This is most likely a result of the massive disparity in country size, with Ukraine the clear underdog in this war.
                     </p>
                 </div>
-            </div>
-            <div class="pure-u-3-4">
-                <p class="chartTitle">Military Spending By Each Country from 2013 to 2022</p>
-                <div id="map" class="vis-container"></div>
             </div>
         </div>
         <!-- end pure grid group -->
@@ -120,11 +117,7 @@
                         </p>
                     </div>
                 </div>
-            <div class="pure-u-1-4">
-                    <p class="chartTitle">Total Army Size by Alliance in 2022</p>
-                    <div id="my_dataviz" class="vis-container"></div>
-                </div>
-            <div class="pure-u-1-2">
+            <div class="pure-u-3-4">
                     <div id="budgetcomparison" class="vis-container"></div>
                 </div>
         </div>
@@ -157,15 +150,8 @@
                 <p class="chartTitle">Aid to Ukraine since the start of the Russia-Ukraine War</p>
             </div>
             <div class="pure-u-1-2">
-                <div class="description">
-                    <button id="AllianceButton">Alliance View</button>
-                    <button id="PerCountryButton">Country View</button>
-                </div>
-                <div class="overflow">
                     <div id="natoaid" class="vis-container"></div>
-                    <div id="aidcountry" style="display: none;"></div>
                 </div>
-            </div>
             <div class="pure-u-1-2">
                     <div id="aiddetailed" class="vis-container"></div>
                 </div> 
@@ -196,17 +182,14 @@
     
     </div>
 </body>
-    <script src="events.js"></script>
     <script type="text/javascript">
         var radarcomparison = "RussiavsUkraine.json";
         var financialaid = "support_alluvial.json";
-        var spendingtime = "military_spending_over_time.json";
         var map1 = "military_spending_combined.json";
         var parallelcoordinate = "parallel_coordinated.json";
         var budgetcomparison = "budget_comparison.json";
         var natocompare = "NATOaid.json";
         var natocomparedetail = "NATOaidDetailed.json";
-        var aidcountry = "NATOaidCountry.json";
         var refugees = "refugees.json";
     
         vegaEmbed('#radar', radarcomparison, { "actions": false }).then(function (result) {
@@ -218,10 +201,6 @@
         }).catch(console.error);
 
         vegaEmbed('#financialaid', financialaid, { "actions": false }).then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        }).catch(console.error);
-
-        vegaEmbed('#spend', spendingtime, { "actions": false }).then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
 
@@ -240,85 +219,6 @@
         vegaEmbed('#refugee', refugees, { "actions": false }).then(function (result) {
           // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
         }).catch(console.error);
-
-        vegaEmbed('#aidcountry', aidcountry, { "actions": false }).then(function (result) {
-          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
-        }).catch(console.error);
-
     
       </script>
-    <script>
-
-        // set the dimensions and margins of the graph
-        var margin = {top: 10, right: 10, bottom: 10, left: 10},
-          width = 250 - margin.left - margin.right,
-          height = 300 - margin.top - margin.bottom;
-        
-        // append the svg object to the body of the page
-        var svg = d3.select("#my_dataviz")
-        .append("svg")
-          .attr("width", width + margin.left + margin.right)
-          .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-          .attr("transform",
-                "translate(" + margin.left + "," + margin.top + ")");
-        
-        // Read data
-        d3.csv('https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/army-alliance.csv', function(data) {
-        
-          // stratify the data: reformatting for d3.js
-          var root = d3.stratify()
-            .id(function(d) { return d.Alliance; })   // Name of the entity (column name is name in csv)
-            .parentId(function(d) { return d.Parent; })   // Name of the parent (column name is parent in csv)
-            (data);
-          root.sum(function(d) { return +d.Total })   // Compute the numeric value for each entity
-        
-          // Then d3.treemap computes the position of each element of the hierarchy
-          // The coordinates are added to the root object above
-          d3.treemap()
-            .size([width, height])
-            .padding(4)
-            (root)
-        
-        console.log(root.leaves())
-          // use this information to add rectangles:
-          svg
-            .selectAll("rect")
-            .data(root.leaves())
-            .enter()
-            .append("rect")
-              .attr('x', function (d) { return d.x0; })
-              .attr('y', function (d) { return d.y0; })
-              .attr('width', function (d) { return d.x1 - d.x0; })
-              .attr('height', function (d) { return d.y1 - d.y0; })
-              .style("stroke", "black")
-              .style("fill", "#69b3a2");
-        
-          // and to add the text labels
-          svg
-            .selectAll("text")
-            .data(root.leaves())
-            .enter()
-            .append("text")
-              .attr("x", function(d){ return d.x0+10})    // +10 to adjust position (more right)
-              .attr("y", function(d){ return d.y0+20})    // +20 to adjust position (lower)
-              .text(function(d){ return d.data.Alliance})
-              .attr("font-family: 'Roboto', sans-serif")
-              .attr("font-size", "15px")
-              .attr("fill", "white");
-
-          svg
-            .selectAll("text")
-            .data(root.leaves())
-            .enter()
-            .append("text")
-              .attr("x", function(d){ return d.x0+15})    // +10 to adjust position (more right)
-              .attr("y", function(d){ return d.y0+35}) 
-              .text(function(d){return d.data.Alliance + ' had a total army size of ' + d.data.Total})
-              .attr("font-family: 'Roboto', sans-serif")
-              .attr("font-size", "12px")
-              .attr("fill", "white");
-            
-        })
-        </script>
 </html>

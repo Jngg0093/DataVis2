@@ -20,13 +20,8 @@
           {
             "type": "fold",
             "fields": [
-              "Military Spending (Billions)","Army Size (Millions)","Military Aircraft (Thousands)","Military Land Vehicles (Thousands)","Artillery (Thousands)"
+              "Military Spending","Army Size","Military Aircraft","Military Land Vehicles","Artillery"
             ]
-          },
-          {
-            "type": "formula",
-            "as": "formattedValue",
-            "expr": "format(datum.value, '.1f')"
           }
         ]
       },
@@ -51,50 +46,50 @@
       "domain": {"data": "folded", "field": "key"}
     },
     {
-      "name": "Military Spending (Billions)",
+      "name": "Military Spending",
       "type": "linear",
       "range": {"signal": "[0, radius - 30]"},
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Spending (Billions)"}
+      "domain": {"data": "folded", "field": "Military Spending"}
     },
     {
-      "name": "Army Size (Millions)",
+      "name": "Army Size",
       "type": "linear",
       "range": {"signal": "[0, radius - 30]"},
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Army Size (Millions)"}
+      "domain": {"data": "folded", "field": "Army Size"}
     },
     {
-      "name": "Military Land Vehicles (Thousands)",
+      "name": "Military Land Vehicles",
       "type": "linear",
       "range": {"signal": "[0, radius - 30]"},
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Land Vehicles (Thousands)"}
+      "domain": {"data": "folded", "field": "Military Land Vehicles"}
     },
     {
-      "name": "Military Aircraft (Thousands)",
+      "name": "Military Aircraft",
       "type": "linear",
       "range": {"signal": "[0, radius - 30]"},
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Aircraft (Thousands)"}
+      "domain": {"data": "folded", "field": "Military Aircraft"}
     },
     {
-      "name": "Artillery (Thousands)",
+      "name": "Artillery",
       "type": "linear",
       "range": {"signal": "[0, radius - 30]"},
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Artillery (Thousands)"}
+      "domain": {"data": "folded", "field": "Artillery"}
     },
     {
       "name": "color",
       "type": "ordinal",
       "domain": {"data": "table", "field": "Country"},
-      "range": ["#0066cc","#E4181C"]
+      "range": ["#005AB5","#DC3220"]
     }
   ],
 
@@ -130,26 +125,27 @@
               "x": {"signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"},
               "y": {"signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"},
               "stroke": {"scale": "color", "field": "Country"},
-              "strokeWidth": {"value": 1},
-              "fill": {"scale": "color", "field": "Country"},
-              "fillOpacity": {"value": 0.1}
+              "strokeWidth": {"value": 1}
             }
-          }
+          },
+          "zindex": 1
         },
         {
-          "type": "text",
+          "type": "symbol",
           "name": "value-text",
-          "from": {"data": "category-line"},
+          "from": {"data": "facet"},
           "encode": {
             "enter": {
-              "x": {"signal":"datum.x"},
-              "y": {"signal":"datum.y"},
-              "text": {"signal": "datum.datum.formattedValue"},
-              "align": {"value": "center"},
-              "baseline": {"value": "middle"},
-              "fill": {"value": "black"}
+              "fill": {"scale": "color", "field": "Country"},
+              "x": {"signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"},
+              "y": {"signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"}},
+            "update":{
+              "tooltip": {
+                "signal": "{'Country': datum.Country, 'Aspect': datum.key,'Value': format(datum.value, '.3s')}"
             }
-          }
+            }
+          },
+          "zindex":2
         }
       ]
     },

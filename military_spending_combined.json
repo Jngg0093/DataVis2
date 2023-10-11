@@ -155,15 +155,17 @@
         ]
     },
     {
-      "width": 560,
-      "height": 150,
+      "width": "container",
       "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/spending_gdp_time.csv"},
       "transform": [
         {"fold": ["2013", "2014", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022"]}
       ],
       "layer": [
-        {
-          "mark": {"type": "line", "color": "lightgray"},
+        {"transform": [
+          {"filter": {"field": "Country", "oneOf": ["Ukraine", "Russia", "Saudi Arabia", "Oman", "Libya"]}},
+          {"filter": "datum.value != ''"}
+        ],
+          "mark": {"type": "line", "color": "grey", "point":{"color":"grey", "size": 75}},
           "encoding": {"detail": {"field": "Country", "type": "nominal"}}
         },
         {
@@ -196,7 +198,7 @@
           "color": "black"
           },
           "encoding": {
-            "size":{"value":50},
+            "size":{"value":75},
             "x": {
               "field": "key",
               "type": "ordinal",
@@ -231,11 +233,11 @@
               "type": "nominal",
               "scale": {
                 "domain": ["Ukraine", "Russia"],
-                "range": ["#0066cc","#E4181C"]
+                "range": ["#005AB5","#DC3220"]
               },
               "legend": {"orient": "right", "direction": "vertical", "title": null}
             },
-            "size":{"value":200}
+            "size":{"value":150}
           }
         },
         {

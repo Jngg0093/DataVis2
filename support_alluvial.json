@@ -194,7 +194,7 @@
             "signal": "!groupSelector && (groupHover.Country == datum.Country || groupHover.key == datum.key) ? 1 : 0"
           },
           "tooltip": {
-            "signal": "datum.Country + ' → ' + datum.key + '    = $' + format(datum.value, ',.0f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
+            "signal": "datum.Country + ' → ' + datum.key + '    = $' + format(datum.value, ',.2f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
           }
         },
         "hover": {"strokeOpacity": {"value": 1}}
@@ -215,7 +215,7 @@
           "y2": {"field": "scaledY1"},
           "fillOpacity": {"value": 1},
           "tooltip": {
-            "signal": "datum.grpId + '   ' + ' = $' + format(datum.total, ',.0f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
+            "signal": "datum.grpId + '   ' + ' = $' + format(datum.total, ',.2f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
           }
         },
         "hover": {"fillOpacity": {"value": 1}}
