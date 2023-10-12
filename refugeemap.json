@@ -289,7 +289,7 @@
                 "value": "black"
               },
               "opacity": {
-                "value": 0.5
+                "value": 0.4
               },
               "strokeWidth": {
                 "value": 2
@@ -348,9 +348,9 @@
                 "scale": {
                   "domain": ["NATO", "non-NATO"],
                   "range": [
-                    "darkblue",
-                    "red"
-                  ]
+                    "#005AB5",
+                    "#DC3220"
+                ]
                 },
                 "legend": {
                   "orient": "top-right"

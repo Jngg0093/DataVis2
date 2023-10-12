@@ -137,7 +137,10 @@
             "field": "key",
             "type": "ordinal",
             "axis": {
-              "title": "Year"
+              "title": "Year",
+              "labelAngle": 0,
+              "labelAlign":"center",
+              "labelPadding": 10
             }
           },
           "y": {

@@ -1,6 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  },
   "height": 100,
   "data": {
     "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/financialaid.csv",
