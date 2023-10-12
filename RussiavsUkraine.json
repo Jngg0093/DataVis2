@@ -1,131 +1,209 @@
 {
   "$schema": "https://vega.github.io/schema/vega/v5.json",
-  "autosize": {"type": "none", "contains": "padding"},
-
+  "autosize": {
+    "type": "none",
+    "contains": "padding"
+  },
   "signals": [
-    {"name": "radius", "update": "width / 4"}
+    {
+      "name": "radius",
+      "update": "width / 4"
+    }
   ],
-
   "data": [
-        {"name":"table", 
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/RussiavsUkraine.csv",
-        "format": {"type": "csv"}     
-        },
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/RussiavsUkraine.csv",
+      "format": {
+        "type": "csv"
+      }
+    },
+    {
+      "name": "folded",
+      "source": "table",
+      "transform": [
         {
-        "name": "folded",
-        "source": "table",
-        "transform": [
-          {
-            "type": "fold",
-            "fields": [
-              "Military Spending","Army Size","Military Aircraft","Military Land Vehicles","Artillery"
-            ]
-          }
-        ]
-      },
+          "type": "fold",
+          "fields": [
+            "Military Spending",
+            "Army Size",
+            "Military Aircraft",
+            "Military Land Vehicles",
+            "Artillery"
+          ]
+        }
+      ]
+    },
     {
       "name": "key2",
       "source": "folded",
       "transform": [
         {
           "type": "aggregate",
-          "groupby": ["key"]
+          "groupby": [
+            "key"
+          ]
         }
       ]
     }
   ],
-
   "scales": [
     {
       "name": "angular",
       "type": "point",
-      "range": {"signal": "[-PI, PI]"},
+      "range": {
+        "signal": "[-PI, PI]"
+      },
       "padding": 0.5,
-      "domain": {"data": "folded", "field": "key"}
+      "domain": {
+        "data": "folded",
+        "field": "key"
+      }
     },
     {
       "name": "Military Spending",
       "type": "linear",
-      "range": {"signal": "[0, radius - 30]"},
+      "range": {
+        "signal": "[0, radius - 30]"
+      },
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Spending"}
+      "domain": {
+        "data": "folded",
+        "field": "Military Spending"
+      }
     },
     {
       "name": "Army Size",
       "type": "linear",
-      "range": {"signal": "[0, radius - 30]"},
+      "range": {
+        "signal": "[0, radius - 30]"
+      },
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Army Size"}
+      "domain": {
+        "data": "folded",
+        "field": "Army Size"
+      }
     },
     {
       "name": "Military Land Vehicles",
       "type": "linear",
-      "range": {"signal": "[0, radius - 30]"},
+      "range": {
+        "signal": "[0, radius - 30]"
+      },
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Land Vehicles"}
+      "domain": {
+        "data": "folded",
+        "field": "Military Land Vehicles"
+      }
     },
     {
       "name": "Military Aircraft",
       "type": "linear",
-      "range": {"signal": "[0, radius - 30]"},
+      "range": {
+        "signal": "[0, radius - 30]"
+      },
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Military Aircraft"}
+      "domain": {
+        "data": "folded",
+        "field": "Military Aircraft"
+      }
     },
     {
       "name": "Artillery",
       "type": "linear",
-      "range": {"signal": "[0, radius - 30]"},
+      "range": {
+        "signal": "[0, radius - 30]"
+      },
       "zero": true,
       "nice": true,
-      "domain": {"data": "folded", "field": "Artillery"}
+      "domain": {
+        "data": "folded",
+        "field": "Artillery"
+      }
     },
     {
       "name": "color",
       "type": "ordinal",
-      "domain": ["Ukraine", "Russia"],
-      "range": ["#005AB5","#DC3220"]
+      "domain": [
+        "Ukraine",
+        "Russia"
+      ],
+      "range": [
+        "#005AB5",
+        "#DC3220"
+      ]
     }
   ],
-
   "encode": {
     "enter": {
-      "x": {"signal": "radius"},
-      "y": {"signal": "radius"}
+      "x": {
+        "signal": "radius"
+      },
+      "y": {
+        "signal": "radius"
+      }
     }
   },
-
   "marks": [
     {
       "type": "group",
       "name": "categories",
       "zindex": 1,
       "encode": {
-      "enter": {
-        "x": {"signal": "width / 2 - radius"},
-        "y": {"signal": "height / 2- radius"}
-      }
-    }, 
+        "enter": {
+          "x": {
+            "signal": "width / 2 - radius"
+          },
+          "y": {
+            "signal": "height / 2- radius"
+          }
+        }
+      },
       "from": {
-        "facet": {"data": "folded", "name": "facet", "groupby": ["Country"]}
+        "facet": {
+          "data": "folded",
+          "name": "facet",
+          "groupby": [
+            "Country"
+          ]
+        }
       },
       "marks": [
         {
           "type": "line",
           "name": "category-line",
-          "from": {"data": "facet"},
+          "from": {
+            "data": "facet"
+          },
           "encode": {
             "enter": {
-              "interpolate": {"value": "linear-closed"},
-              "x": {"signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"},
-              "y": {"signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"},
-              "stroke": {"scale": "color", "field": "Country"},
-              "strokeWidth": {"value": 1},
-              "fill":{"scale": "color", "field": "Country"},
-              "fillOpacity": {"value": 0.1}
+              "interpolate": {
+                "value": "linear-closed"
+              },
+              "x": {
+                "signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"
+              },
+              "y": {
+                "signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"
+              },
+              "stroke": {
+                "scale": "color",
+                "field": "Country"
+              },
+              "strokeWidth": {
+                "value": 1
+              },
+              "fill": {
+                "scale": "color",
+                "field": "Country"
+              },
+              "fillOpacity": {
+                "value": 0.1
+              }
             }
           },
           "zindex": 0
@@ -133,48 +211,80 @@
         {
           "type": "symbol",
           "name": "value-text",
-          "from": {"data": "facet"},
+          "from": {
+            "data": "facet"
+          },
           "encode": {
             "enter": {
-              "fill": {"scale": "color", "field": "Country"},
-              "x": {"signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"},
-              "y": {"signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"}},
-            "update":{
+              "fill": {
+                "scale": "color",
+                "field": "Country"
+              },
+              "x": {
+                "signal": "scale(datum.key, datum.value) * cos(scale('angular', datum.key))"
+              },
+              "y": {
+                "signal": "scale(datum.key, datum.value) * sin(scale('angular', datum.key))"
+              }
+            },
+            "update": {
               "tooltip": {
                 "signal": "{'Country': datum.Country, 'Aspect': datum.key,'Value': format(datum.value, '.3s')}"
-            }
+              }
             }
           },
-          "zindex":2
+          "zindex": 2
         }
       ]
     },
     {
       "type": "rule",
       "name": "radial-grid",
-      "from": {"data": "key2"},
+      "from": {
+        "data": "key2"
+      },
       "zindex": 0,
       "encode": {
         "enter": {
-           "x": {"signal": "width / 2 - radius"},
-           "y": {"signal": "height / 2 - radius"}, 
-           "x2": {"signal": "(width / 2 - radius) + (radius * cos(scale('angular', datum.key)))"},
-            "y2": {"signal": "(height / 2 - radius) + (radius * sin(scale('angular', datum.key)))"},
-          "stroke": {"value": "lightgray"},
-          "strokeWidth": {"value": 1}
+          "x": {
+            "signal": "width / 2 - radius"
+          },
+          "y": {
+            "signal": "height / 2 - radius"
+          },
+          "x2": {
+            "signal": "(width / 2 - radius) + (radius * cos(scale('angular', datum.key)))"
+          },
+          "y2": {
+            "signal": "(height / 2 - radius) + (radius * sin(scale('angular', datum.key)))"
+          },
+          "stroke": {
+            "value": "lightgray"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
         }
       }
     },
     {
       "type": "text",
       "name": "key-label",
-      "from": {"data": "key2"},
+      "from": {
+        "data": "key2"
+      },
       "zindex": 1,
       "encode": {
         "enter": {
-          "x": {"signal": "(width / 2 - radius) + ((radius + 10) * cos(scale('angular', datum.key)))"},
-          "y": {"signal": "(height / 2 - radius) + ((radius + 10) * sin(scale('angular', datum.key)))"},
-          "text": {"field": "key"},
+          "x": {
+            "signal": "(width / 2 - radius) + ((radius + 10) * cos(scale('angular', datum.key)))"
+          },
+          "y": {
+            "signal": "(height / 2 - radius) + ((radius + 10) * sin(scale('angular', datum.key)))"
+          },
+          "text": {
+            "field": "key"
+          },
           "align": [
             {
               "test": "abs(scale('angular', datum.key)) > PI / 2",
@@ -186,32 +296,52 @@
           ],
           "baseline": [
             {
-              "test": "scale('angular', datum.key) > 0", "value": "top"
+              "test": "scale('angular', datum.key) > 0",
+              "value": "top"
             },
             {
-              "test": "scale('angular', datum.key) == 0", "value": "middle"
+              "test": "scale('angular', datum.key) == 0",
+              "value": "middle"
             },
             {
               "value": "bottom"
             }
           ],
-          "fill": {"value": "black"},
-          "fontWeight": {"value": "bold"},
-          "fontSize": {"value": 10}
+          "fill": {
+            "value": "black"
+          },
+          "fontWeight": {
+            "value": "bold"
+          },
+          "fontSize": {
+            "value": 10
+          }
         }
       }
     },
     {
       "type": "line",
       "name": "outer-line",
-      "from": {"data": "radial-grid"},
+      "from": {
+        "data": "radial-grid"
+      },
       "encode": {
         "enter": {
-          "interpolate": {"value": "linear-closed"},
-          "x": {"field": "x2"},
-          "y": {"field": "y2"},
-          "stroke": {"value": "lightgray"},
-          "strokeWidth": {"value": 1}
+          "interpolate": {
+            "value": "linear-closed"
+          },
+          "x": {
+            "field": "x2"
+          },
+          "y": {
+            "field": "y2"
+          },
+          "stroke": {
+            "value": "lightgray"
+          },
+          "strokeWidth": {
+            "value": 1
+          }
         }
       }
     }

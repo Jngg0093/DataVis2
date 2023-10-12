@@ -1,218 +1,428 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Estimated number of Ukranian Refugees as at 12 Sep ",
-  "config": {"view": {
-    "stroke": "transparent"
-  }},
-  "params":[
-        {
-        "name":"refugee_above",
-        "value":0,
-        "bind":{
-          "input": "range",
-          "min": 0,
-          "max": 1000000,
-          "step": 10000,
-          "name": "Minimum refugees taken: "}
-      }],
-  "vconcat":[{
-    "width":"container",
-    "projection": {
-      "type": "equalEarth",
-      "rotate":[-60, 0]
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "params": [
+    {
+      "name": "refugee_above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 1000000,
+        "step": 10000,
+        "name": "Minimum refugees taken: "
+      }
+    }
+  ],
+  "vconcat": [
+    {
+      "width": "container",
+      "projection": {
+        "type": "equalEarth",
+        "rotate": [
+          -60,
+          0
+        ]
       },
-    "data": {
-      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
-      "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-    },
-    "layer": [ 
-      {
-        "data": {
-                    "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
-            "format": {"type": "topojson", "feature": "oceans"}
-        },
-        "mark": {"type": "geoshape", "fill": "#ADD8E6"}
-      },
-
-      {
       "data": {
-          "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
-          "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "ne_110m_admin_0_countries"
+        }
+      },
+      "layer": [
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+            "format": {
+              "type": "topojson",
+              "feature": "oceans"
+            }
           },
-          "mark": {"type": "geoshape", "fill": null, "stroke": "darkgray"}
-      }, 
-      
-      {
-        "transform": [
-          {"calculate": "'No Ukranian refugees were officially recorded in ' + datum.properties.NAME", "as": "note"}
-        ],
-        "mark": {"type": "geoshape", "fill": "beige", "stroke": "#999999"},
-        "encoding": {
-          "tooltip": {
-            "field": "note"
+          "mark": {
+            "type": "geoshape",
+            "fill": "#ADD8E6"
           }
-        }
-      },
-      {
-        "transform": [
-          {"filter": "datum.properties.NAME=='Ukraine'"}
-        ],
-        "mark": {"type": "geoshape", "fill": "#ffff00", "stroke": "darkgrey"},
-        "encoding": {
-          "tooltip": {
-            "value": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+            "format": {
+              "type": "topojson",
+              "feature": "ne_110m_graticules_30"
+            }
+          },
+          "mark": {
+            "type": "geoshape",
+            "fill": null,
+            "stroke": "darkgray"
           }
-        }
-      },
-      {"transform": [
-          {
-          "lookup": "properties.NAME",
-          "from": {
-              "data": {
-              "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
-              },
-              "key": "Country",
-              "fields": ["Number of refugees"]
+        },
+        {
+          "transform": [
+            {
+              "calculate": "'No Ukranian refugees were officially recorded in ' + datum.properties.NAME",
+              "as": "note"
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "fill": "beige",
+            "stroke": "#999999"
+          },
+          "encoding": {
+            "tooltip": {
+              "field": "note"
+            }
           }
+        },
+        {
+          "transform": [
+            {
+              "filter": "datum.properties.NAME=='Ukraine'"
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "fill": "#ffff00",
+            "stroke": "darkgrey"
+          },
+          "encoding": {
+            "tooltip": {
+              "value": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"
+            }
           }
-        ],
-        "mark": {"type": "geoshape", "stroke": "#999999"},
-        "encoding": {
+        },
+        {
+          "transform": [
+            {
+              "lookup": "properties.NAME",
+              "from": {
+                "data": {
+                  "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+                },
+                "key": "Country",
+                "fields": [
+                  "Number of refugees"
+                ]
+              }
+            }
+          ],
+          "mark": {
+            "type": "geoshape",
+            "stroke": "#999999"
+          },
+          "encoding": {
             "color": {
-            "field": "Number of refugees",
-            "type": "quantitative",
-            "scale": {
+              "field": "Number of refugees",
+              "type": "quantitative",
+              "scale": {
                 "type": "threshold",
-                "domain": [0],
-                "range":["#AFE1AF"]
+                "domain": [
+                  0
+                ],
+                "range": [
+                  "#AFE1AF"
+                ]
               },
-              "legend":null
+              "legend": null
             },
             "tooltip": [
-            {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-            {"field": "Number of refugees", "type": "quantitative", "format":".2s", "title":"Number of refugees"}
+              {
+                "field": "properties.NAME",
+                "type": "nominal",
+                "title": "Country"
+              },
+              {
+                "field": "Number of refugees",
+                "type": "quantitative",
+                "format": ".2s",
+                "title": "Number of refugees"
+              }
             ]
-        }
-      },
-      {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
-      },
-      "transform": [
-        {"calculate": "48.3794",
-          "as": "origin_latitude"
+          }
         },
-        {"calculate": "31.1656",
-          "as": "origin_longitude"
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+          },
+          "transform": [
+            {
+              "calculate": "48.3794",
+              "as": "origin_latitude"
+            },
+            {
+              "calculate": "31.1656",
+              "as": "origin_longitude"
+            },
+            {
+              "filter": {
+                "param": "pts"
+              }
+            },
+            {
+              "filter": "datum['Number of refugees'] > refugee_above"
+            }
+          ],
+          "mark": "rule",
+          "encoding": {
+            "longitude": {
+              "field": "origin_longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "origin_latitude",
+              "type": "quantitative"
+            },
+            "longitude2": {
+              "field": "longitude"
+            },
+            "latitude2": {
+              "field": "latitude"
+            },
+            "color": {
+              "condition": {
+                "param": "pts",
+                "empty": false,
+                "value": "#005AB5"
+              },
+              "value": "black"
+            },
+            "opacity": {
+              "condition": {
+                "param": "pts",
+                "empty": false,
+                "value": 1
+              },
+              "value": 0.5
+            },
+            "strokeWidth": {
+              "condition": {
+                "param": "pts",
+                "empty": false,
+                "value": 3
+              },
+              "value": 1
+            }
+          }
         },
-        {"filter":{"param": "pts"}},
-        {"filter": "datum['Number of refugees'] > refugee_above"}
-      ],
-      "mark": "rule",
-      "encoding": {
-        "longitude": {
-          "field": "origin_longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "origin_latitude",
-          "type": "quantitative"
-        },
-        "longitude2": {"field": "longitude"},
-        "latitude2": {"field": "latitude"},
-        "color": {
-          "condition": {"param":"pts", "empty": false, "value":"#005AB5"},
-          "value": "black"
-        },
-        "opacity": {"condition":
-          {"param":"pts", "empty": false, "value":1},
-          "value": 0.5
-        },
-        "strokeWidth": {"condition":
-          {"param":"pts", "empty": false, "value":3},
-          "value": 1
-        }
-      }
-      },
-      {
-      "data": {
-        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
-      },
-      "transform": [
-        {"filter": "datum['Number of refugees'] > refugee_above"}
-      ],
-      "mark": "circle",
-      "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
-        },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
-        },
-        "size": {"field": "Number of refugees", "scale": {
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+          },
+          "transform": [
+            {
+              "filter": "datum['Number of refugees'] > refugee_above"
+            }
+          ],
+          "mark": "circle",
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "size": {
+              "field": "Number of refugees",
+              "scale": {
                 "type": "threshold",
-                "domain": [50000, 100000, 500000, 1000000],
-                "range":[10, 30, 50, 100, 150]
+                "domain": [
+                  50000,
+                  100000,
+                  500000,
+                  1000000
+                ],
+                "range": [
+                  10,
+                  30,
+                  50,
+                  100,
+                  150
+                ]
               },
-              "legend": {"orient": "top-left", "format": ".2s"}},
-        "color": {"field": "NATO", "type": "nominal", "title": "Alliance", "scale":{"range": ["darkblue", "red"]},
-        "legend": {"orient":"top-right"}},
-        "opacity": {"value":1}
-      }
-      }, 
-      {
+              "legend": {
+                "orient": "top-left",
+                "format": ".2s"
+              }
+            },
+            "color": {
+              "field": "NATO",
+              "type": "nominal",
+              "title": "Alliance",
+              "scale": {
+                "range": [
+                  "darkblue",
+                  "red"
+                ]
+              },
+              "legend": {
+                "orient": "top-right"
+              }
+            },
+            "opacity": {
+              "value": 1
+            }
+          }
+        },
+        {
+          "data": {
+            "values": [
+              {
+                "longitude": "31.1656",
+                "latitude": "48.3794",
+                "text": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"
+              }
+            ]
+          },
+          "mark": {
+            "type": "point",
+            "shape": "diamond",
+            "size": 75,
+            "fill": "#005AB5",
+            "opacity": 1
+          },
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "color": {
+              "value": "#005AB5"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "width": "container",
+      "params": [
+        {
+          "name": "pts",
+          "select": {
+            "type": "point",
+            "fields": [
+              "Country"
+            ]
+          }
+        }
+      ],
       "data": {
-        "values": [{"longitude":"31.1656", "latitude":"48.3794", "text": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"}]
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
       },
-      "mark": {"type":"point", "shape":"diamond", "size": 75, "fill":"#005AB5", "opacity": 1},
+      "transform": [
+        {
+          "calculate": "100*datum['Number of refugees']/datum['Population']",
+          "as": "Refugees Per Capita"
+        },
+        {
+          "filter": "datum['Number of refugees'] > refugee_above"
+        }
+      ],
+      "mark": {
+        "type": "circle"
+      },
       "encoding": {
-        "longitude": {
-          "field": "longitude",
-          "type": "quantitative"
+        "x": {
+          "field": "Number of refugees",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [
+              100,
+              10000000
+            ]
+          },
+          "axis": {
+            "tickCount": 5
+          }
         },
-        "latitude": {
-          "field": "latitude",
-          "type": "quantitative"
+        "y": {
+          "field": "Population",
+          "type": "quantitative",
+          "scale": {
+            "type": "log",
+            "domain": [
+              10000,
+              1000000000
+            ]
+          },
+          "axis": {
+            "tickCount": 5
+          }
         },
-        "color": {"value": "#005AB5"}
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal",
+            "title": "Country"
+          },
+          {
+            "field": "Number of refugees",
+            "type": "quantitative",
+            "title": "Number of refugees",
+            "format": "0.2s"
+          },
+          {
+            "field": "Population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": "0.2s"
+          },
+          {
+            "field": "Refugees Per Capita",
+            "type": "quantitative",
+            "title": "Refugees Per 100 Capita",
+            "format": "0.2f"
+          }
+        ],
+        "size": {
+          "field": "Refugees Per Capita",
+          "type": "quantitative",
+          "title": "Refugees Per 100 Capita",
+          "scale": {
+            "type": "linear",
+            "domain": [
+              0,
+              10
+            ]
+          },
+          "legend": {
+            "orient": "top-left"
+          }
+        },
+        "color": {
+          "field": "NATO",
+          "type": "nominal",
+          "title": "Alliance",
+          "scale": {
+            "range": [
+              "darkblue",
+              "red"
+            ]
+          },
+          "legend": null
+        },
+        "opacity": {
+          "condition": {
+            "param": "pts",
+            "empty": false,
+            "value": 1
+          },
+          "value": 0.5
+        }
       }
-      }
-    ]
-  },
-    {"width": "container",
-    "params":[
-        {"name":"pts", "select": {"type":"point", "fields": ["Country"]}}
-      ],
-    "data": {"url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"},
-    "transform": [
-      {"calculate": "100*datum['Number of refugees']/datum['Population']", "as": "Refugees Per Capita"},
-      {"filter": "datum['Number of refugees'] > refugee_above"}
-    ],
-    "mark": {"type":"circle"},
-    "encoding": {
-      "x": {"field": "Number of refugees", "type": "quantitative", "scale":{"type": "log", "domain": [100, 10000000]}, "axis": {"tickCount": 5}},
-      "y": {"field": "Population", "type":"quantitative", "scale":{"type": "log", "domain": [10000, 1000000000]}, "axis": {"tickCount": 5}},
-      "tooltip":[
-        {"field": "Country", "type": "nominal", "title": "Country"},
-        {"field": "Number of refugees", "type": "quantitative", "title": "Number of refugees", "format":"0.2s"},
-        {"field":"Population", "type": "quantitative", "title":"Population", "format":"0.2s"},
-         {"field":"Refugees Per Capita", "type": "quantitative", "title":"Refugees Per 100 Capita", "format":"0.2f"}
-      ],
-      "size": {
-        "field": "Refugees Per Capita", 
-        "type": "quantitative", 
-        "title": "Refugees Per 100 Capita", 
-        "scale":{"type": "linear",
-                "domain": [0, 10]
-              },
-        "legend":{"orient": "top-left"}},
-      "color": 
-      {"field": "NATO", "type": "nominal", "title": "Alliance", "scale":{"range": ["darkblue", "red"]}, "legend":null},
-      "opacity": {"condition": {"param":"pts", "empty": false, "value":1},
-              "value": 0.5}
     }
-    }
-    ]
+  ]
 }

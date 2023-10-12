@@ -1,146 +1,211 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width":"container",
-  "config": {"view": {
-    "stroke": "transparent"
-  }},
-  "params":[
-    {
-    "name": "Grouping",
-    "value": "United States",
-    "bind": {
-      "input": "select",
-      "options": [
-        "United States",
-        "Germany",
-        "United Kingdom",
-        "France",
-        "Netherlands",
-        "Japan",
-        "Italy",
-        "Poland",
-        "Canada",
-        "Spain",
-        "Sweden",
-        "Denmark",
-        "Norway",
-        "Austria",
-        "Finland",
-        "Belgium",
-        "Czech Republic",
-        "Slovakia",
-        "Portugal",
-        "Ireland",
-        "Lithuania",
-        "Greece",
-        "Romania",
-        "South Korea",
-        "Estonia",
-        "Latvia",
-        "Bulgaria",
-        "Hungary",
-        "Australia",
-        "Switzerland",
-        "Croatia",
-        "Luxembourg",
-        "Slovenia",
-        "Turkey",
-        "Taiwan",
-        "Cyprus",
-        "Iceland",
-        "Malta",
-        "New Zealand"
-        ],        
-      "labels": [
-        "1. United States",
-        "2. Germany",
-        "3. United Kingdom",
-        "4. France",
-        "5. Netherlands",
-        "6. Japan",
-        "7. Italy",
-        "8. Poland",
-        "9. Canada",
-        "10. Spain",
-        "11. Sweden",
-        "12. Denmark",
-        "13. Norway",
-        "14. Austria",
-        "15. Finland",
-        "16. Belgium",
-        "17. Czech Republic",
-        "18. Slovakia",
-        "19. Portugal",
-        "20. Ireland",
-        "21. Lithuania",
-        "22. Greece",
-        "23. Romania",
-        "24. South Korea",
-        "25. Estonia",
-        "26. Latvia",
-        "27. Bulgaria",
-        "28. Hungary",
-        "29. Australia",
-        "30. Switzerland",
-        "31. Croatia",
-        "32. Luxembourg",
-        "33. Slovenia",
-        "34. Turkey",
-        "35. Taiwan",
-        "36. Cyprus",
-        "37. Iceland",
-        "38. Malta",
-        "39. New Zealand"
-        ],        
-      "name": "Country by rank: "
+  "width": "container",
+  "config": {
+    "view": {
+      "stroke": "transparent"
     }
-  }
+  },
+  "params": [
+    {
+      "name": "Grouping",
+      "value": "United States",
+      "bind": {
+        "input": "select",
+        "options": [
+          "United States",
+          "Germany",
+          "United Kingdom",
+          "France",
+          "Netherlands",
+          "Japan",
+          "Italy",
+          "Poland",
+          "Canada",
+          "Spain",
+          "Sweden",
+          "Denmark",
+          "Norway",
+          "Austria",
+          "Finland",
+          "Belgium",
+          "Czech Republic",
+          "Slovakia",
+          "Portugal",
+          "Ireland",
+          "Lithuania",
+          "Greece",
+          "Romania",
+          "South Korea",
+          "Estonia",
+          "Latvia",
+          "Bulgaria",
+          "Hungary",
+          "Australia",
+          "Switzerland",
+          "Croatia",
+          "Luxembourg",
+          "Slovenia",
+          "Turkey",
+          "Taiwan",
+          "Cyprus",
+          "Iceland",
+          "Malta",
+          "New Zealand"
+        ],
+        "labels": [
+          "1. United States",
+          "2. Germany",
+          "3. United Kingdom",
+          "4. France",
+          "5. Netherlands",
+          "6. Japan",
+          "7. Italy",
+          "8. Poland",
+          "9. Canada",
+          "10. Spain",
+          "11. Sweden",
+          "12. Denmark",
+          "13. Norway",
+          "14. Austria",
+          "15. Finland",
+          "16. Belgium",
+          "17. Czech Republic",
+          "18. Slovakia",
+          "19. Portugal",
+          "20. Ireland",
+          "21. Lithuania",
+          "22. Greece",
+          "23. Romania",
+          "24. South Korea",
+          "25. Estonia",
+          "26. Latvia",
+          "27. Bulgaria",
+          "28. Hungary",
+          "29. Australia",
+          "30. Switzerland",
+          "31. Croatia",
+          "32. Luxembourg",
+          "33. Slovenia",
+          "34. Turkey",
+          "35. Taiwan",
+          "36. Cyprus",
+          "37. Iceland",
+          "38. Malta",
+          "39. New Zealand"
+        ],
+        "name": "Country by rank: "
+      }
+    }
   ],
   "data": {
-      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/financialaid.csv",
-      "format": {"type": "csv"}
-    },
-    "transform": [{"fold": ["Financial commitments",
-    "Humanitarian commitments",
-    "Military commitments",
-    "Share in total EU commitments"]},
-    {"filter": "datum.Country == Grouping"}
-  ],
-  "layer":[{
-    "mark": {"type": "arc", "innerRadius": 50},
-    "encoding": {
-      "theta": {"field": "value", "type": "quantitative"},
-      "color":{"field": "key", "type": "nominal","scale":{"domain":["Financial commitments",
-      "Humanitarian commitments",
-      "Military commitments",
-      "Share in total EU commitments"], "range":["#66c2a5", "#fc8d62", "#8da0cb", "#e78ac3"]},"legend":{"orient": "left"}},
-      "tooltip":[
-        {"field":"Country", "type":"nominal"},
-        {"field":"Alliance", "type": "nominal"},
-        {"field":"value", "type":"quantitative", "title":"Financial Support (US$ billion)"}
-        ]
-        }
+    "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/financialaid.csv",
+    "format": {
+      "type": "csv"
+    }
   },
-  {"transform": [
+  "transform": [
     {
-      "aggregate": [{"op":"sum", "field": "value", "as":"total"}],
-      "groupby": ["Country"]
+      "fold": [
+        "Financial commitments",
+        "Humanitarian commitments",
+        "Military commitments",
+        "Share in total EU commitments"
+      ]
     },
     {
-      "calculate": "'Total aid:;$' + format(datum.total, '.2f') + ' billion'",
-      "as": "rawtext"
-    },
-    {
-      "calculate": "split(datum.rawtext,';')",
-      "as": "text_annotation"
+      "filter": "datum.Country == Grouping"
     }
   ],
-    "mark":{"type":"text", "dy": -7},
-    "encoding":{
-      "text": {"field": "text_annotation"}
-    } 
-  }
+  "layer": [
+    {
+      "mark": {
+        "type": "arc",
+        "innerRadius": 50
+      },
+      "encoding": {
+        "theta": {
+          "field": "value",
+          "type": "quantitative"
+        },
+        "color": {
+          "field": "key",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Financial commitments",
+              "Humanitarian commitments",
+              "Military commitments",
+              "Share in total EU commitments"
+            ],
+            "range": [
+              "#e78ac3",
+              "#8da0cb",
+              "#fc8d62",
+              "#66c2a5"
+            ]
+          },
+          "legend": {
+            "orient": "top",
+            "titleAnchor": "middle",
+            "title": "Type of Aid",
+            "titleAlign": "center",
+            "labelExpr": "datum.label == 'Financial commitments' ? 'Financial': datum.label == 'Humanitarian commitments' ? 'Humanitarian': datum.label == 'Military commitments' ? 'Military' : 'Share in EU Commitments'"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "Country",
+            "type": "nominal"
+          },
+          {
+            "field": "Alliance",
+            "type": "nominal"
+          },
+          {
+            "field": "key",
+            "title": "Type of Aid"
+          },
+          {
+            "field": "value",
+            "type": "quantitative",
+            "title": "Aid Value (US$ billion)"
+          }
+        ]
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "value",
+              "as": "total"
+            }
+          ],
+          "groupby": [
+            "Country"
+          ]
+        },
+        {
+          "calculate": "'Total aid:;$' + format(datum.total, '.2f') + ' billion'",
+          "as": "rawtext"
+        },
+        {
+          "calculate": "split(datum.rawtext,';')",
+          "as": "text_annotation"
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "dy": -7
+      },
+      "encoding": {
+        "text": {
+          "field": "text_annotation"
+        }
+      }
+    }
   ]
- 
-      
 }
