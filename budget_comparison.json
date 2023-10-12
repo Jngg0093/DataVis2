@@ -16,7 +16,7 @@
       "as": "key1"
     },
     {
-      "calculate": "'$' + format(datum.value, '.2f') + ' Billion'",
+      "calculate": "'$' + format(datum.value, '.2f') + ' billion'",
       "as": "tooltiptext"
     },
     {

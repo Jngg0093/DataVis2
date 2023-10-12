@@ -78,32 +78,33 @@
             <div class="pure-g">
                 <div class="pure-u-1-1">
                     <p class="chartTitle">Military Spending By Each Country from 2013 to 2022</p>
-                    <div id="map" class="vis-container" style="height: 500px;"></div>
+                </div>
+                <div class="pure-u-1-1">
+                    <div id="spendingmap" class="vis-container"></div>
                 </div>
             </div>
             <div class="pure-g">
                 <div class="pure-u-1-2">
                     <div class="description-left">
-                        <p> The military spend as a prorpotion of GDP indicates how important the military is to a
+                        <p> The military spend as a proportion of GDP indicates how important the military is to a
                             particular country.
                             Within the past decade, countries in Africa and the Middle East have consistently spent the
                             highest proportion of their GDP on their military.
                             These countries include <b>Libya</b>, <b>Saudi Arabia</b>, and <b>Oman</b>.
                         </p>
-                    </div>
-                </div>
-                <div class="pure-u-1-2">
-                    <div class="description-right">
                         <p>To fight against the Russian invasion in 2022, <b>Ukraine</b> recorded the <b>highest
-                                military spend</b> globally as a proportion of GDP at an extremely high value of
-                            <b>33.55%</b>.
+                            military spend</b> globally as a proportion of GDP at <b>33.55%</b>.
                             No country has come close to this amount of military prioritising in the past decade.
                             Surprisingly, Russia's military spending as a proportion of GDP has hardly increased from
                             its previous years.
                             This is most likely a result of the massive disparity in country size, with Ukraine the
                             clear underdog in this war.
-                        </p>
+                    </p>
                     </div>
+                </div>
+                <div class="pure-u-1-2">
+                    <div class="chartTitle">Highest Military Spend per GDP Since 2013</div>
+                    <div id="spendingline" class="vis-container-right"></div>
                 </div>
             </div>
             <!-- end pure grid group -->
@@ -238,13 +239,15 @@
                             All NATO countries (29) opened their borders except for the United States and Canada.
                         </p>
                         <p>
-                            The small country of Montenegro was the most accepting country, recording the <b>most refugees per 100 capita</b> at <b>9.08</b> refugees per 100 capita.
+                            The small country of <b>Montenegro</b> was the most accepting country per capita, recording the <b>most refugees per 100 capita</b> at <b>9.08</b> refugees per 100 capita.
                         </p>
                     </div>
                 </div>
                 <div class="pure-u-3-4">
                     <div class="chartTitle">Estimated Number of Ukranian Refugees per Country as at 12/09/2023</div>
-                    <div id="refugee" class="vis-container-right"></div>
+                    <div id="refugeemap" class="vis-container-right"></div>
+                    <div class="chartTitle" style="margin-top: 50px;">Refugees vs Population</div>
+                    <div id="refugeescatter" class="vis-container-right"></div>
                 </div>
             </div>
             <!-- end pure grid group -->
@@ -277,7 +280,6 @@
                     </div>
                 </div>
             </div>
-            </div>
             <!-- end pure grid group -->
         </div>
     </div>
@@ -285,18 +287,24 @@
 <script type="text/javascript">
     var radarcomparison = "RussiavsUkraine.json";
     var aidalluvial = "support_alluvial.json";
-    var map1 = "military_spending_combined.json";
+    var map1 = "spendingmap.json";
     var parallelcoordinate = "parallel_coordinated.json";
     var budgetcomparison = "budget_comparison.json";
     var natocompare = "NATOaid.json";
     var natocomparedetail = "NATOaidDetailed.json";
-    var refugees = "refugees.json";
+    var refugeemap = "refugeemap.json";
+    var refugeeplot = "refugeescatter.json";
+    var line = "spendingline.json";
 
     vegaEmbed('#budgetcomparison', budgetcomparison, { "actions": false }).then(function (result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#map', map1, { "actions": false }).then(function (result) {
+    vegaEmbed('#spendingmap', map1, { "actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#spendingline', line, { "actions": false }).then(function (result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
@@ -308,10 +316,13 @@
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    vegaEmbed('#refugee', refugees, { "actions": false }).then(function (result) {
+    vegaEmbed('#refugeemap', refugeemap, { "actions": false }).then(function (result) {
         // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
+    vegaEmbed('#refugeescatter', refugeeplot, { "actions": false }).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
 
     // Target the Vega container
     // Calculate the width based on the container's width

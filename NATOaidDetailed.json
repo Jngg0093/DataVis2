@@ -1,6 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": "container",
+  "padding":{"bottom": 20},
   "config": {
     "view": {
       "stroke": "transparent"
@@ -114,6 +115,10 @@
       ]
     },
     {
+      "calculate": "'$' + format(datum.value, '.2f') + ' billion'",
+      "as": "tooltiptext"
+    },
+    {
       "filter": "datum.Country == Grouping"
     }
   ],
@@ -146,7 +151,7 @@
             ]
           },
           "legend": {
-            "orient": "top",
+            "orient": "left",
             "titleAnchor": "middle",
             "title": "Type of Aid",
             "titleAlign": "center",
@@ -167,9 +172,8 @@
             "title": "Type of Aid"
           },
           {
-            "field": "value",
-            "type": "quantitative",
-            "title": "Aid Value (US$ billion)"
+            "field": "tooltiptext",
+            "title": "Aid Value"
           }
         ]
       }

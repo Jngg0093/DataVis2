@@ -1,0 +1,320 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+    },
+    "width": "container",
+    "params": [
+        {
+          "name": "YearFilter",
+          "value": 2022,
+          "bind": {
+            "input": "range",
+            "min": 2013,
+            "max": 2022,
+            "step": 1,
+            "name": "Year: "
+          }
+        }
+      ],
+    "data": {
+      "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/spending_gdp_time.csv"
+    },
+    "transform": [
+      {
+        "fold": [
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ]
+      }
+    ],
+    "layer": [
+      {
+        "transform": [
+          {
+            "filter": {
+              "field": "Country",
+              "oneOf": [
+                "Ukraine",
+                "Russia",
+                "Saudi Arabia",
+                "Oman",
+                "Libya"
+              ]
+            }
+          },
+          {
+            "filter": "datum.value != ''"
+          }
+        ],
+        "mark": {
+          "type": "line",
+          "color": "grey",
+          "point": {
+            "color": "grey",
+            "size": 75
+          }
+        },
+        "encoding": {
+          "detail": {
+            "field": "Country",
+            "type": "nominal"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "line",
+          "point": true
+        },
+        "transform": [
+          {
+            "filter": {
+              "field": "Country",
+              "oneOf": [
+                "Ukraine",
+                "Russia"
+              ]
+            }
+          }
+        ],
+        "encoding": {
+          "color": {
+            "field": "Country",
+            "type": "nominal",
+            "legend": {
+              "orient": "top-left",
+              "direction": "horizontal",
+              "title": null
+            }
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.key==YearFilter"
+          },
+          {
+            "window": [
+              {
+                "op": "rank",
+                "as": "ranking"
+              }
+            ],
+            "sort": [
+              {
+                "field": "value",
+                "order": "descending"
+              }
+            ]
+          },
+          {
+            "filter": "datum.ranking == 1"
+          }
+        ],
+        "mark": {
+          "type": "point",
+          "shape": "diamond",
+          "fill": "black",
+          "color": "black"
+        },
+        "encoding": {
+          "size": {
+            "value": 75
+          },
+          "x": {
+            "field": "key",
+            "type": "ordinal",
+            "axis": {
+              "title": "Year"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": "Military Spending Per GDP",
+              "format": ".0%"
+            }
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "opacity": 1
+        },
+        "transform": [
+          {
+            "filter": "datum.key==YearFilter"
+          },
+          {
+            "filter": {
+              "field": "Country",
+              "oneOf": [
+                "Ukraine",
+                "Russia"
+              ]
+            }
+          }
+        ],
+        "encoding": {
+          "x": {
+            "field": "key",
+            "type": "ordinal",
+            "axis": {
+              "title": "Year"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": "Military Spending Per GDP",
+              "format": ".0%"
+            }
+          },
+          "color": {
+            "field": "Country",
+            "type": "nominal",
+            "scale": {
+              "domain": [
+                "Ukraine",
+                "Russia"
+              ],
+              "range": [
+                "#005AB5",
+                "#DC3220"
+              ]
+            },
+            "legend": {
+              "orient": "top-left",
+              "direction": "horizontal",
+              "title": null
+            }
+          },
+          "size": {
+            "value": 150
+          }
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.key==YearFilter"
+          },
+          {
+            "window": [
+              {
+                "op": "rank",
+                "as": "ranking"
+              }
+            ],
+            "sort": [
+              {
+                "field": "value",
+                "order": "descending"
+              }
+            ]
+          },
+          {
+            "filter": "datum.ranking == 1"
+          },
+          {
+            "calculate": "datum.Country + ' had the;highest military spend;relative to GDP;at ' + format(datum.value, '.2%') + ' in ' + datum.key",
+            "as": "text_annotation_raw"
+          },
+          {
+            "calculate": "split(datum.text_annotation_raw,';')",
+            "as": "text_annotation"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": {
+            "expr": "if(datum.key == '2022', 'right', if(datum.key == '2013', 'left', 'center'))"
+          },
+          "dx": {
+            "expr": "if(datum.key == '2022', -20, if(datum.key == '2013', 0, 0))"
+          },
+          "dy": {
+            "expr": "if(datum.key == '2022', 5, -60)"
+          },
+          "baseline": "bottom"
+        },
+        "encoding": {
+          "text": {
+            "field": "text_annotation"
+          },
+          "x": {
+            "field": "key",
+            "type": "ordinal",
+            "axis": {
+              "title": "Year"
+            }
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": "Military Spending Per GDP",
+              "format": ".0%"
+            }
+          }
+        }
+      }
+    ],
+    "encoding": {
+      "x": {
+        "field": "key",
+        "type": "ordinal",
+        "axis": {
+          "title": "Year"
+        }
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "scale": {
+          "domain": [
+            0,
+            0.36
+          ]
+        },
+        "axis": {
+          "title": "Military Spending Per GDP",
+          "format": ".0%"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "key",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        {
+          "field": "Country",
+          "type": "nominal",
+          "title": "Country"
+        },
+        {
+          "field": "value",
+          "type": "quantitative",
+          "title": "% of GDP",
+          "format": ".2%"
+        }
+      ]
+    }
+  }

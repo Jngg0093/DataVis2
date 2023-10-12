@@ -1,0 +1,194 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+    },
+    "width": "container",
+    "params": [
+        {
+            "name": "refugee_above",
+            "value": 0,
+            "bind": {
+              "input": "range",
+              "min": 0,
+              "max": 1000000,
+              "step": 10000,
+              "name": "Minimum refugees taken: "
+            }
+        }
+    ],
+    "data": {
+        "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+      },
+    "layer":[
+        {
+            "transform": [
+                {
+                  "calculate": "100*datum['Number of refugees']/datum['Population']",
+                  "as": "Refugees Per Capita"
+                },
+                {
+                  "filter": "datum['Number of refugees'] > refugee_above"
+                }
+              ],
+              "params":[
+                {
+                    "name": "selectAlliance",
+                    "select": {"type": "point", "fields": ["NATO"]},
+                    "bind": "legend"
+                }
+              ],
+              "mark": {
+                "type": "circle"
+              },
+              "encoding": {
+                "x": {
+                  "field": "Number of refugees",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      100,
+                      10000000
+                    ]
+                  },
+                  "axis": {
+                    "tickCount": 5
+                  }
+                },
+                "y": {
+                  "field": "Population",
+                  "type": "quantitative",
+                  "scale": {
+                    "type": "log",
+                    "domain": [
+                      10000,
+                      1000000000
+                    ]
+                  },
+                  "axis": {
+                    "tickCount": 5
+                  }
+                },
+                "tooltip": [
+                  {
+                    "field": "Country",
+                    "type": "nominal",
+                    "title": "Country"
+                  },
+                  {
+                    "field": "Number of refugees",
+                    "type": "quantitative",
+                    "title": "Number of refugees",
+                    "format": "0.2s"
+                  },
+                  {
+                    "field": "Population",
+                    "type": "quantitative",
+                    "title": "Population",
+                    "format": "0.2s"
+                  },
+                  {
+                    "field": "Refugees Per Capita",
+                    "type": "quantitative",
+                    "title": "Refugees Per 100 Capita",
+                    "format": "0.2f"
+                  }
+                ],
+                "size": {
+                  "field": "Refugees Per Capita",
+                  "type": "quantitative",
+                  "title": "Refugees Per 100 Capita",
+                  "scale": {
+                    "type": "linear",
+                    "domain": [
+                      0,
+                      10
+                    ],
+                    "range":[50,500]
+                  },
+                  "legend": {
+                    "orient": "right",
+                    "titleAlign":"center"
+                }
+                },
+                "color": {
+                  "field": "NATO",
+                  "type": "nominal",
+                  "title": "Alliance",
+                  "scale": {
+                    "domain": ["NATO", "non-NATO"],
+                    "range": [
+                        "#005AB5",
+                        "#DC3220"
+                    ]
+                  },
+                  "legend": {"orient": "top-left", "direction": "horizontal", "title":"Alliance (click to filter)"}},
+                  "opacity": {
+                    "condition": {"param": "selectAlliance", "value": 0.8},
+                    "value": 0.3
+                  }
+              }
+        },
+        
+        {
+            "transform": [
+                {
+                    "filter": {
+                    "field": "Country",
+                    "oneOf": [
+                      "Russia",
+                      "Montenegro"
+                    ]}
+                },
+                {
+                    "filter": "datum['Number of refugees'] > refugee_above"
+                }
+              ],
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "middle",
+                "fontSize": 12,
+                "dy": -7,
+                "dx": 10
+              },
+              "encoding": {
+                "text":{
+                    "field": "Country"
+                },
+                "x": {
+                    "field": "Number of refugees",
+                    "type": "quantitative",
+                    "scale": {
+                      "type": "log",
+                      "domain": [
+                        100,
+                        10000000
+                      ]
+                    },
+                    "axis": {
+                      "tickCount": 5
+                    }
+                  },
+                  "y": {
+                    "field": "Population",
+                    "type": "quantitative",
+                    "scale": {
+                      "type": "log",
+                      "domain": [
+                        10000,
+                        1000000000
+                      ]
+                    },
+                    "axis": {
+                      "tickCount": 5
+                    }
+                  }
+              }
+        }
+      ]
+      
+    }

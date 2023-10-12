@@ -1,0 +1,396 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "config": {
+      "view": {
+        "stroke": "transparent"
+      }
+    },
+    "params": [
+      {
+        "name": "refugee_above",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 0,
+          "max": 1000000,
+          "step": 10000,
+          "name": "Minimum refugees taken: "
+        }
+      },
+      {
+        "name": "selectcountry",
+        "value": "All",
+        "bind":{
+          "input": "select",
+          "options":[
+            "All",
+            "Russia",
+            "Germany",
+            "Poland",
+            "Czechia",
+            "United Kingdom",
+            "Spain",
+            "Italy",
+            "Moldova",
+            "Slovakia",
+            "Netherlands",
+            "Ireland",
+            "Romania",
+            "Belgium",
+            "France",
+            "Austria",
+            "Switzerland",
+            "Bulgaria",
+            "Finland",
+            "Portugal",
+            "Norway",
+            "Montenegro",
+            "Hungary",
+            "Estonia",
+            "Lithuania",
+            "Turkey",
+            "Sweden",
+            "Denmark",
+            "Latvia",
+            "Belarus",
+            "Georgia",
+            "Greece",
+            "Croatia",
+            "Cyprus",
+            "North Macedonia",
+            "Slovenia",
+            "Luxembourg",
+            "Serbia",
+            "Azerbaijan",
+            "Albania",
+            "Iceland",
+            "Malta",
+            "Armenia",
+            "Liechtenstein",
+            "Bosnia and Herzegovina"
+          ]
+          ,
+          "labels": [
+            "All",
+            "1. Russia",
+            "2. Germany",
+            "3. Poland",
+            "4. Czechia",
+            "5. United Kingdom",
+            "6. Spain",
+            "7. Italy",
+            "8. Moldova",
+            "9. Slovakia",
+            "10. Netherlands",
+            "11. Ireland",
+            "12. Romania",
+            "13. Belgium",
+            "14. France",
+            "15. Austria",
+            "16. Switzerland",
+            "17. Bulgaria",
+            "18. Finland",
+            "19. Portugal",
+            "20. Norway",
+            "21. Montenegro",
+            "22. Hungary",
+            "23. Estonia",
+            "24. Lithuania",
+            "25. Turkey",
+            "26. Sweden",
+            "27. Denmark",
+            "28. Latvia",
+            "29. Belarus",
+            "30. Georgia",
+            "31. Greece",
+            "32. Croatia",
+            "33. Cyprus",
+            "34. North Macedonia",
+            "35. Slovenia",
+            "36. Luxembourg",
+            "37. Serbia",
+            "38. Azerbaijan",
+            "39. Albania",
+            "40. Iceland",
+            "41. Malta",
+            "42. Armenia",
+            "43. Liechtenstein",
+            "44. Bosnia and Herzegovina"
+          ]
+          ,
+          "name": "Country selection (ranked by number of refugees): "
+        }
+      }
+    ],
+        "width": "container",
+        "projection": {
+          "type": "equalEarth",
+          "rotate": [
+            -60,
+            0
+          ]
+        },
+        "data": {
+          "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_110m_admin_0_countries"
+          }
+        },
+        "layer": [
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+              "format": {
+                "type": "topojson",
+                "feature": "oceans"
+              }
+            },
+            "mark": {
+              "type": "geoshape",
+              "fill": "#ADD8E6"
+            }
+          },
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Visualisation/cutne_110m.json",
+              "format": {
+                "type": "topojson",
+                "feature": "ne_110m_graticules_30"
+              }
+            },
+            "mark": {
+              "type": "geoshape",
+              "fill": null,
+              "stroke": "darkgray"
+            }
+          },
+          {
+            "transform": [
+              {
+                "calculate": "'No Ukranian refugees were officially recorded in ' + datum.properties.NAME",
+                "as": "note"
+              }
+            ],
+            "mark": {
+              "type": "geoshape",
+              "fill": "beige",
+              "stroke": "#999999"
+            },
+            "encoding": {
+              "tooltip": {
+                "field": "note"
+              }
+            }
+          },
+          {
+            "transform": [
+              {
+                "filter": "datum.properties.NAME=='Ukraine'"
+              }
+            ],
+            "mark": {
+              "type": "geoshape",
+              "fill": "#ffff00",
+              "stroke": "darkgrey"
+            },
+            "encoding": {
+              "tooltip": {
+                "value": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"
+              }
+            }
+          },
+          {
+            "transform": [
+              {
+                "lookup": "properties.NAME",
+                "from": {
+                  "data": {
+                    "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+                  },
+                  "key": "Country",
+                  "fields": [
+                    "Number of refugees"
+                  ]
+                }
+              }
+            ],
+            "mark": {
+              "type": "geoshape",
+              "stroke": "#999999"
+            },
+            "encoding": {
+              "color": {
+                "field": "Number of refugees",
+                "type": "quantitative",
+                "scale": {
+                  "type": "threshold",
+                  "domain": [
+                    0
+                  ],
+                  "range": [
+                    "#AFE1AF"
+                  ]
+                },
+                "legend": null
+              },
+              "tooltip": [
+                {
+                  "field": "properties.NAME",
+                  "type": "nominal",
+                  "title": "Country"
+                },
+                {
+                  "field": "Number of refugees",
+                  "type": "quantitative",
+                  "format": ".2s",
+                  "title": "Number of refugees"
+                }
+              ]
+            }
+          },
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+            },
+            "transform": [
+              {
+                "calculate": "48.3794",
+                "as": "origin_latitude"
+              },
+              {
+                "calculate": "31.1656",
+                "as": "origin_longitude"
+              },
+              {
+                "filter": "selectcountry != 'All' ? datum.Country == selectcountry: datum.Country"
+              },
+              {
+                "filter": "datum['Number of refugees'] > refugee_above"
+              }
+            ],
+            "mark": "rule",
+            "encoding": {
+              "longitude": {
+                "field": "origin_longitude",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "origin_latitude",
+                "type": "quantitative"
+              },
+              "longitude2": {
+                "field": "longitude"
+              },
+              "latitude2": {
+                "field": "latitude"
+              },
+              "color": {
+                "value": "black"
+              },
+              "opacity": {
+                "value": 0.5
+              },
+              "strokeWidth": {
+                "value": 2
+              }
+            }
+          },
+          {
+            "data": {
+              "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/refugees.csv"
+            },
+            "transform": [
+              {
+                "filter": "datum['Number of refugees'] > refugee_above"
+              },
+              {
+                "filter": "selectcountry != 'All' ? datum.Country == selectcountry: datum.Country"
+              }
+            ],
+            "mark": "circle",
+            "encoding": {
+              "longitude": {
+                "field": "longitude",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "latitude",
+                "type": "quantitative"
+              },
+              "size": {
+                "field": "Number of refugees",
+                "scale": {
+                  "type": "threshold",
+                  "domain": [
+                    50000,
+                    100000,
+                    500000,
+                    1000000
+                  ],
+                  "range": [
+                    10,
+                    30,
+                    50,
+                    100,
+                    150
+                  ]
+                },
+                "legend": {
+                  "orient": "top-left",
+                  "format": ".2s"
+                }
+              },
+              "color": {
+                "field": "NATO",
+                "type": "nominal",
+                "title": "Alliance",
+                "scale": {
+                  "domain": ["NATO", "non-NATO"],
+                  "range": [
+                    "darkblue",
+                    "red"
+                  ]
+                },
+                "legend": {
+                  "orient": "top-right"
+                }
+              },
+              "opacity": {
+                "value": 1
+              }
+            }
+          },
+          {
+            "data": {
+              "values": [
+                {
+                  "longitude": "31.1656",
+                  "latitude": "48.3794",
+                  "text": "There are approximately 5.8 million Ukranian refugees since Russia's invasion"
+                }
+              ]
+            },
+            "mark": {
+              "type": "point",
+              "shape": "diamond",
+              "size": 75,
+              "fill": "#005AB5",
+              "opacity": 1
+            },
+            "encoding": {
+              "longitude": {
+                "field": "longitude",
+                "type": "quantitative"
+              },
+              "latitude": {
+                "field": "latitude",
+                "type": "quantitative"
+              },
+              "color": {
+                "value": "#005AB5"
+              }
+            }
+          }
+        ]
+}
