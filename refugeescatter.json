@@ -14,7 +14,7 @@
               "input": "range",
               "min": 0,
               "max": 1000000,
-              "step": 10000,
+              "step": 1000,
               "name": "Minimum refugees taken: "
             }
         }
@@ -111,7 +111,8 @@
                   },
                   "legend": {
                     "orient": "right",
-                    "titleAlign":"center"
+                    "titleAlign":"center",
+                    "titlePadding": 20
                 }
                 },
                 "color": {
@@ -152,6 +153,7 @@
                 "align": "left",
                 "baseline": "middle",
                 "fontSize": 12,
+                "fontWeight":"bolder",
                 "dy": -7,
                 "dx": 10
               },
@@ -162,6 +164,7 @@
                 "x": {
                     "field": "Number of refugees",
                     "type": "quantitative",
+                    "title": "Number Of Refugees",
                     "scale": {
                       "type": "log",
                       "domain": [

@@ -6,7 +6,6 @@
       "stroke": "transparent"
     }
   },
-  "height": 100,
   "data": {
     "url": "https://raw.githubusercontent.com/Jngg0093/DataVis2/main/Data%20Visualisation%202/Data/financialaid.csv",
     "format": {
@@ -46,25 +45,16 @@
         "type": "bar"
       },
       "encoding": {
-        "x": {
+        "y": {
           "aggregate": "sum",
           "field": "summed",
-          "title": "Aid (USD$ billion)",
-          "sort": "descending",
-          "scale": {
-            "domain": [
-              0,
-              190
-            ]
-          }
+          "title": "Aid (USD$ billion)"
         },
-        "y": {
+        "x": {
           "field": "Alliance",
-          "type": "nominal",
-          "sort": "descending",
-          "title": null,
+          "sort":["non-NATO", "NATO"],
           "axis": {
-            "orient": "right"
+            "labelAngle": 0
           }
         },
         "color": {
@@ -84,10 +74,10 @@
             ]
           },
           "legend": {
-            "orient": "left",
+            "orient": "top-left",
             "titleAnchor": "middle",
             "title": "Type of Aid",
-            "titleAlign": "center",
+            "titleAlign": "right",
             "labelExpr": "datum.label == 'Financial commitments' ? 'Financial': datum.label == 'Humanitarian commitments' ? 'Humanitarian': datum.label == 'Military commitments' ? 'Military' : 'Share in EU Commitments'"
           }
         },
@@ -128,8 +118,8 @@
       ],
       "mark": {
         "type": "text",
-        "align": "right",
-        "dx": -2,
+        "align": "center",
+        "dy": -8,
         "baseline": "middle",
         "fontStyle": "bold"
       },
@@ -137,11 +127,12 @@
         "text": {
           "field": "rawtext"
         },
-        "y": {
-          "field": "Alliance",
-          "type": "ordinal"
-        },
         "x": {
+          "field": "Alliance",
+          "type": "ordinal",
+          "sort":["non-NATO", "NATO"]
+        },
+        "y": {
           "field": "total",
           "type": "quantitative"
         }

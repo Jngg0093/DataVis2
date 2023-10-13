@@ -59,6 +59,7 @@
           },
           "title": "Budget Source",
           "legend": {
+            "orient": "top",
             "labelExpr": "datum.label == 'UkraineFinancial Budget ($ billion)' ? 'Ukrainian Budget': datum.label == 'RussiaFinancial Budget ($ billion)' ? 'Russian Budget': 'Foreign Aid'"
           }
         },

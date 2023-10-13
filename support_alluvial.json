@@ -241,10 +241,10 @@
       "type": "ordinal",
       "range": [
         "grey",
-        "blue",
-        "salmon",
-        "lightblue",
-        "teal",
+        "#2171b5",
+        "#bdd7e7",
+        "#6baed6",
+        "#eff3ff",
         "#66c2a5",
         "#fc8d62",
         "#8da0cb",
@@ -334,7 +334,7 @@
             "signal": "!groupSelector && (groupHover.Country == datum.Country || groupHover.key == datum.key) ? 1 : 0"
           },
           "tooltip": {
-            "signal": "datum.Country + ' → ' + datum.key + '    = $' + format(datum.value, ',.2f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
+            "signal": "{'Donor':datum.Country, 'Type':datum.key, 'Aid':'$' + format(datum.value, ',.2f') + ' billion', 'Percent of Aid': format(datum.percentage, '.1%')}"
           }
         },
         "hover": {
@@ -376,7 +376,7 @@
             "value": 1
           },
           "tooltip": {
-            "signal": "datum.grpId + '   ' + ' = $' + format(datum.total, ',.2f') + ' billion   (' + format(datum.percentage, '.1%') + ')'"
+            "signal": "{'Grouping':datum.grpId, 'Aid': '$' + format(datum.total, ',.2f') + ' billion', 'Percent of Aid':format(datum.percentage, '.1%')}"
           }
         },
         "hover": {

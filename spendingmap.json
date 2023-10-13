@@ -277,8 +277,9 @@
               "type": "text",
               "align": "left",
               "baseline": "middle",
-              "fontSize": 12,
-              "dy": -10
+              "fontSize": 15,
+              "dy": -10,
+              "fontWeight":"bolder"
             },
             "encoding": {
               "text": {"field": "Country"}

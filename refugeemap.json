@@ -123,6 +123,7 @@
       }
     ],
         "width": "container",
+        "height": 300,
         "projection": {
           "type": "equalEarth",
           "rotate": [
@@ -391,6 +392,36 @@
                 "value": "#005AB5"
               }
             }
+          },
+          {
+            "data": {
+              "values": [
+                {
+                  "longitude": "31.1656",
+                  "latitude": "48.3794",
+                  "text": "Ukraine"
+                }
+              ]
+            },
+              "mark": {
+                "type": "text",
+                "align": "left",
+                "baseline": "middle",
+                "fontSize": 12,
+                "dy": -10,
+                "fontWeight":"bolder"
+              },
+              "encoding": {
+                "longitude": {
+                  "field": "longitude",
+                  "type": "quantitative"
+                },
+                "latitude": {
+                  "field": "latitude",
+                  "type": "quantitative"
+                },
+                "text": {"field": "text"}
+              }
           }
         ]
 }
